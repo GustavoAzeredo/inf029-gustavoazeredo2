@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*Definição da struct que vai receber as palavras.*/
+
 typedef struct 
 {
 	char str1[20];
@@ -9,7 +11,10 @@ typedef struct
 }novo;
 novo palavras;
 
-novo ler3palavras(novo a, char p1[], char p2[], char p3[])
+/*Função 'ler 3 palavras' que lê as palavras e 
+as coloca na struct.*/
+
+novo ler3palavras(char p1[], char p2[], char p3[])
 {
 	novo l3p;
 
@@ -19,19 +24,22 @@ novo ler3palavras(novo a, char p1[], char p2[], char p3[])
 	scanf("%s",&l3p.str2);
 	printf("Escreva a terceira palavra: \n");
 	scanf("%s",&l3p.str3);
-
+	return l3p;
 }
-int main(int argc, char const *argv[])
+
+/*Função 'main' que imprime as palavras.*/
+
+int main()
 {
 	char word1[20];
 	char word2[20];
 	char word3[20];
 
-	ler3palavras(palavras, word1, word2, word3);
+	novo palavras = ler3palavras(word1, word2, word3);
 
-	printf("%s\n",palavras.str1);
-	printf("%s\n",palavras.str2);
-	printf("%s\n",palavras.str3);
+	printf("[%s, ",palavras.str1);
+	printf("%s, ",palavras.str2);
+	printf("%s]",palavras.str3);
 
 	return 0;
 }
