@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+/*Função 'fat' recebe um número, verifica se pode ser calculado
+seu fatorial, se possível calcula seu fatorial, caso contrário
+manda uma menssagem de erro.*/
+
 int fat(int a)
 {
 	int val=1, i=1;
@@ -22,6 +26,9 @@ int fat(int a)
 	}
 	return val;
 }
+
+/*Função main que lê e imprime o númro.*/
+
 int main(int argc, char const *argv[])
 {
 	int b, resp;

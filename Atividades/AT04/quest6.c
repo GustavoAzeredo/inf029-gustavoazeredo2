@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/*Função 'l3l' que lê três letras e
+as coloca em uma string.*/
+
 char l3l(char let[])
 {
 	int n=3;
@@ -16,6 +19,9 @@ char l3l(char let[])
 		}
 	}
 }
+
+/*Função main que imprime as três letras.*/
+
 int main(int argc, char const *argv[])
 {
 	char l[3];

@@ -1,11 +1,17 @@
 #include<stdio.h>
 
+/*Função 'soma' que calcula a soma de 
+dois números*/
+
 float soma(float a, float b)
 {
 	float val;
 	val = (a + b);
 	return val;
 }
+
+/*Função main que lê e imprime dois números*/
+
 int main()
 {
 	float a, b, res;

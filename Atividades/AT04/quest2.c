@@ -1,11 +1,17 @@
 #include<stdio.h>
 
+/*Função 'subtrai' que faz a subtração
+de três números*/
+
 float subtrai(float a, float b, float c)
 {
 	float resto;
 	resto = (a - b - c);
 	return resto;
 }
+
+/*Função main que lê e imprime três números*/
+
 int main(int argc, char const *argv[])
 {
 	float a, b, c, res;
