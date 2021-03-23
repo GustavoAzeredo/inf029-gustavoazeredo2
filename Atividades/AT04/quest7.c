@@ -3,35 +3,35 @@
 
 typedef struct 
 {
-	char string1[20];
-	char string2[20];
-	char string3[20];
+	char str1[20];
+	char str2[20];
+	char str3[20];
 }novo;
 novo palavras;
 
-novo ler3palavras(char a[], char b[], char c[])
+novo ler3palavras(novo a, char p1[], char p2[], char p3[])
 {
 	novo l3p;
 
-	printf("Escreva a primeira: \n");
-	scanf("%s",&l3p.string1);
-	printf("Escreva a primeira: \n");
-	scanf("%s",&l3p.string2);
-	printf("Escreva a primeira: \n");
-	scanf("%s",&l3p.string3);
-	return l3p;
+	printf("Escreva a primeira palavra: \n");
+	scanf("%s",&l3p.str1);
+	printf("Escreva a segunda palavra: \n");
+	scanf("%s",&l3p.str2);
+	printf("Escreva a terceira palavra: \n");
+	scanf("%s",&l3p.str3);
 
 }
 int main(int argc, char const *argv[])
 {
-	char string1[20];
-	char string2[20];
-	char string3[20];
+	char word1[20];
+	char word2[20];
+	char word3[20];
 
-	novo palavras = ler3palavras(string1, string2, string3);
+	ler3palavras(palavras, word1, word2, word3);
 
-	printf("%s\n",palavras.string1);
-	printf("%s\n",palavras.string2);
-	printf("%s\n",palavras.string3);
+	printf("%s\n",palavras.str1);
+	printf("%s\n",palavras.str2);
+	printf("%s\n",palavras.str3);
+
 	return 0;
 }
