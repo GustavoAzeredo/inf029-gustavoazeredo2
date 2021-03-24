@@ -8,7 +8,7 @@ typedef struct
 	int dia;
 	int mes;
 	int ano;
-	char cpf[15];
+	char cpf[11];
 	char sexo;
 }novo;
 novo dados;
@@ -24,7 +24,7 @@ novo cadastrarcliente(char n[], int d, int m, int a, char c[], char s)
 	gets(cc.nome);
 	printf("Digite dia, mês e ano do nascimento: \n");
 	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);
-	printf("Digite o CPF: \n");
+	printf("Digite o CPF (sem separações): \n");
 	scanf("%s",&cc.cpf);
 	printf("Sexo: \n");
 	scanf("%s",&cc.sexo);
@@ -39,7 +39,7 @@ int main()
 	char name[20];
 	char sex;
 	int day, month, year;
-	char ssn[15];
+	char ssn[11];
 
 	novo dados = cadastrarcliente(name, day, month, year, ssn, sex);
 
