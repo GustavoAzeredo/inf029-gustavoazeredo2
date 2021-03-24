@@ -19,11 +19,11 @@ novo ler3palavras(char p1[], char p2[], char p3[])
 	novo l3p;
 
 	printf("Escreva a primeira palavra: \n");
-	scanf("%s",&l3p.str1);
+	gets(l3p.str1);setbuf(stdin,NULL);
 	printf("Escreva a segunda palavra: \n");
-	scanf("%s",&l3p.str2);
+	gets(l3p.str2);setbuf(stdin,NULL);
 	printf("Escreva a terceira palavra: \n");
-	scanf("%s",&l3p.str3);
+	gets(l3p.str3);setbuf(stdin,NULL);
 	return l3p;
 }
 
