@@ -65,6 +65,8 @@ char validarcpf(char b[], char y[])
 	}
 }
 
+/*Função 'validarsexo' que valida o sexo do cliente.*/
+
 char validarsexo(char h[], char z[])
 {
 	if (h=='m'||h=='M'||h=='f'||h=='F'||h=='o'||h=='O')
