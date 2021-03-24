@@ -23,11 +23,11 @@ novo cadastrarcliente(char n[], int d, int m, int a, char c[], char s)
 	printf("Nome: \n");
 	gets(cc.nome);
 	printf("Digite dia, mês e ano do nascimento: \n");
-	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);
-	printf("Digite o CPF (sem separações): \n");
-	scanf("%s",&cc.cpf);
+	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);setbuf(stdin,NULL);
+	printf("Digite o CPF (apenas números): \n");
+	gets(cc.cpf);
 	printf("Sexo: \n");
-	scanf("%s",&cc.sexo);
+	scanf("%c",&cc.sexo);setbuf(stdin,NULL);
 
 	return cc;
 }
@@ -44,9 +44,8 @@ int main()
 	novo dados = cadastrarcliente(name, day, month, year, ssn, sex);
 
 	printf("- Nome: %s\n",dados.nome);
-	printf("- Data de nascimento: %d/%d/%d\n",dados.dia,dados.mes,dados.ano);
+	printf("- Data: %d/%d/%d\n",dados.dia,dados.mes,dados.ano);
 	printf("- CPF: %s\n",dados.cpf);
 	printf("- Sexo: %c\n",dados.sexo);
-
 	return 0;
 }

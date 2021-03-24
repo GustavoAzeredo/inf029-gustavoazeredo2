@@ -23,11 +23,11 @@ novo cadastrarcliente(char n[], int d, int m, int a, char c[], char s)
 	printf("Nome: \n");
 	gets(cc.nome);
 	printf("Digite dia, mês e ano do nascimento: \n");
-	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);
-	printf("Digite o CPF (sem separações): \n");
-	scanf("%s",&cc.cpf);
+	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);setbuf(stdin,NULL);
+	printf("Digite o CPF (apenas números): \n");
+	gets(cc.cpf);
 	printf("Sexo: \n");
-	scanf("%s",&cc.sexo);
+	scanf("%c",&cc.sexo);setbuf(stdin,NULL);
 
 	return cc;
 }
@@ -40,11 +40,11 @@ char validarnome(char a[], char x[])
 	b = strlen(a);
 	if (b<=20)
 	{
-		strcpy(x,"Nome válido!\n");
+		strcpy(x,"Válido!\n");
 	}
 	else
 	{
-		strcpy(x,"Nome inválido! Digite um nome com até 20 caracteres.\n");
+		strcpy(x,"Inválido! Digite um nome com até 20 caracteres.\n");
 	}
 
 }
@@ -57,11 +57,11 @@ char validarcpf(char b[], char y[])
 	c = strlen(b);
 	if (c==11)
 	{
-		strcpy(y,"CPF válido!\n");
+		strcpy(y,"Válido!\n");
 	}
 	else
 	{
-		strcpy(y,"CPF inválido! CPF contém 11 dígitos.\n");
+		strcpy(y,"Inválido! CPF contém 11 dígitos.\n");
 	}
 }
 
@@ -71,11 +71,11 @@ char validarsexo(char h[], char z[])
 {
 	if (h=='m'||h=='M'||h=='f'||h=='F'||h=='o'||h=='O')
 	{
-		strcpy(z,"Sexo válido!\n");
+		strcpy(z,"Válido!\n");
 	}
 	else
 	{
-		strcpy(z,"Sexo inválido! Digite: 'm', 'n' ou 'o'.");
+		strcpy(z,"Inválido! Digite: 'm', 'n' ou 'o'.");
 	}
 }
 
@@ -93,17 +93,17 @@ int main()
 		char vn[100];
 		validarnome(dados.nome, vn);
 
-		printf("%s - %s\n",dados.nome,vn);
+		printf("- Nome: %s - %s\n",dados.nome,vn);
 
 		char vcpf[100];
 		validarcpf(dados.cpf,vcpf);
 
-		printf("%s - %s\n",dados.cpf,vcpf);
+		printf("- CPF: %s - %s\n",dados.cpf,vcpf);
 
 		char vs[100];
 		validarsexo(dados.sexo,vs);
 
-		printf("%c - %s\n",dados.sexo,vs);
+		printf("- Sexo: %c - %s\n",dados.sexo,vs);
 
 
 		return 0;
