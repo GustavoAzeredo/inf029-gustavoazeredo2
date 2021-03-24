@@ -8,7 +8,7 @@ typedef struct
 	int dia;
 	int mes;
 	int ano;
-	char cpf[11];
+	char cpf[15];
 	char sexo;
 }novo;
 novo dados;
@@ -39,12 +39,12 @@ int main()
 	char name[20];
 	char sex;
 	int day, month, year;
-	char ssn[11];
+	char ssn[15];
 
 	novo dados = cadastrarcliente(name, day, month, year, ssn, sex);
 
 	printf("- Nome: %s\n",dados.nome);
-	printf("- Data de nascimentto: %d/%d/%d\n",dados.dia,dados.mes,dados.ano);
+	printf("- Data de nascimento: %d/%d/%d\n",dados.dia,dados.mes,dados.ano);
 	printf("- CPF: %s\n",dados.cpf);
 	printf("- Sexo: %c\n",dados.sexo);
 

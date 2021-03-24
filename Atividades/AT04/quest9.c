@@ -8,7 +8,7 @@ typedef struct
 	int dia;
 	int mes;
 	int ano;
-	char cpf[11];
+	char cpf[15];
 	char sexo;
 }novo;
 novo dados;
@@ -32,6 +32,8 @@ novo cadastrarcliente(char n[], int d, int m, int a, char c[], char s)
 	return cc;
 }
 
+/*Função 'validarnome' que valida o nome do cliente.*/
+
 char validarnome(char a[], char x[])
 {
 	int b;
@@ -47,6 +49,8 @@ char validarnome(char a[], char x[])
 
 }
 
+/*Função 'validarcpf' que valida o cpf do cliente.*/
+
 char validarcpf(char b[], char y[])
 {
 	int c;
@@ -61,6 +65,18 @@ char validarcpf(char b[], char y[])
 	}
 }
 
+char validarsexo(char h[], char z[])
+{
+	if (h=='m'||h=='M'||h=='f'||h=='F'||h=='o'||h=='O')
+	{
+		strcpy(z,"Sexo válido!\n");
+	}
+	else
+	{
+		strcpy(z,"Sexo inválido! Digite: 'm', 'n' ou 'o'.");
+	}
+}
+
 /*Função 'main' que imprime os dados.*/
 
 int main()
@@ -68,7 +84,7 @@ int main()
 	char name[20];
 	char sex;
 	int day, month, year;
-	char ssn[11];
+	char ssn[15];
 
 	novo dados = cadastrarcliente(name, day, month, year, ssn, sex);
 
@@ -82,7 +98,10 @@ int main()
 
 		printf("%s - %s\n",dados.cpf,vcpf);
 
+		char vs[100];
+		validarsexo(dados.sexo,vs);
 
+		printf("%c - %s\n",dados.sexo,vs);
 
 
 		return 0;
