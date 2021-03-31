@@ -30,7 +30,7 @@ cadastro disciplinas[70];
 
 /*Função de 'CadastrarDisciplina' que lê os dados das disciplinas.*/
 
-	cadastro CadastrarDisciplina()
+	cadastro InserirDisciplina()
 	{
 		int op3, i=0, cont=1;
 		cadastro dis[70];
@@ -58,6 +58,7 @@ cadastro disciplinas[70];
 			{
 				i++;
 				cont=cont;
+				MenuPrincipal();
 			}
 		} while (i<cont);
 		
@@ -66,7 +67,7 @@ cadastro disciplinas[70];
 
 	/*Função de 'CadastrarAlunos' que lê os dados dos alunos.*/
 
-		dados CadastrarAluno()
+		dados InserirAluno()
 		{
 			int op3, i=0, cont=1;
 			dados alu[2000];
@@ -96,6 +97,7 @@ cadastro disciplinas[70];
 				{
 					i++;
 					cont=cont;
+					MenuPrincipal();
 				}
 			} while (i<cont);
 
@@ -104,7 +106,7 @@ cadastro disciplinas[70];
 
 		/*Função de CadastrarProfessor', que lê os dados do professores.*/
 
-		dados CadastrarProfessor()
+		dados InserirProfessor()
 		{
 			int op3, i=0, cont=1;
 			dados prof[50];
@@ -134,6 +136,7 @@ cadastro disciplinas[70];
 				{
 					i++;
 					cont=cont;
+					MenuPrincipal();
 				}
 			} while (i<cont);
 
@@ -163,7 +166,9 @@ cadastro disciplinas[70];
 		{
 			int escolha, a;
 
-			printf("\n- Digite 1: Para cadastrar disciplina.\n");
+			printf("\n- Digite 1: Para inserir disciplina.\n");
+			printf("\n- Digite 2: Para excluir disciplina.\n");
+			printf("\n- Digite 3: Para atualizar disciplina.\n");
 			printf("- Digite 0: Para voltar ao menu principal.\n\n");
 			scanf("%d",&a);setbuf(stdin,NULL);
 
@@ -177,9 +182,9 @@ cadastro disciplinas[70];
 		{
 			int escolha, a;
 
-			printf("\n- Digite 1: Para cadastrar aluno.\n");
-			printf("- Digite 2: Para inserir aluno em uma disciplina.\n");		
-			printf("- Digite 3: Para excluir aluno de uma disciplina.\n");		
+			printf("\n- Digite 1: Para inserir aluno.\n");
+			printf("- Digite 2: Para excluir aluno.\n");		
+			printf("- Digite 3: Para atualizar aluno.\n");		
 			printf("- Digite 0: Para voltar ao menu principal.\n\n");
 			scanf("%d",&a);setbuf(stdin,NULL);
 
@@ -193,7 +198,9 @@ cadastro disciplinas[70];
 		{
 			int escolha, a;
 
-			printf("\n- Digite 1: Para cadastrar professor.\n");
+			printf("\n- Digite 1: Para inserir professor.\n");
+			printf("\n- Digite 2: Para excluir professor.\n");
+			printf("\n- Digite 3: Para atualizar professor.\n");
 			printf("- Digite 0: Para voltar ao menu principal.\n\n");
 			scanf("%d",&a);setbuf(stdin,NULL);
 
@@ -221,14 +228,28 @@ int main(int argc, char const *argv[])
 				op2 = MenuDisciplina();
 				if (op2 == 1)
 				{
-					cadastro disc = CadastrarDisciplina();
+					cadastro disc = InserirDisciplina();
 				}
 				else
 				{
-					if (op2 != 0 && op2 >1)
+					if (op2 == 2)
 					{
-						printf("\nOpção Inválida!\n");
-						op2 = MenuDisciplina();
+						/*função exlcuir disciplina*/
+					}
+					else
+					{
+						if (op2 == 3)
+						{
+							/* função atualizar disciplina */
+						}
+						else
+						{
+							if (op2 != 0 && op2 >3)
+							{
+								printf("Opção inválida!\n");
+								op2 = MenuDisciplina();
+							}
+						}
 					}
 				}
 			}
@@ -239,19 +260,19 @@ int main(int argc, char const *argv[])
 					op2 = MenuAluno();
 					if (op2 == 1)
 					{
-						dados alun = CadastrarAluno();
+						dados alun = InserirAluno();
 					}
 					else
 					{
 						if (op2 == 2)
 						{
-							/* code */
+							/* função escluir aluno */
 						}
 						else
 						{
 							if (op2 == 3)
 							{
-								/* code */
+								/* função atualizar aluno */
 							}
 							else
 							{
@@ -271,14 +292,28 @@ int main(int argc, char const *argv[])
 						op2 = MenuProfessor();
 						if (op2 == 1)
 						{
-							dados prof = CadastrarProfessor();
+							dados prof = InserirProfessor();
 						}
 						else
 						{
-							if (op2 != 0 && op2 > 1)
+							if (op2 == 2)
 							{
-								printf("\nOpção Inválida!\n");
-								op2 = MenuProfessor();
+								/*função excluir professor*/
+							}
+							else
+							{
+								if (op2 == 3)
+								{
+									/* função atualizar professor */
+								}
+								else
+								{
+									if (op2 != 0 && op2 >3)
+									{
+										printf("Opção inválida!\n");
+										op2 = MenuProfessor();
+									}
+								}
 							}
 						}
 					}
