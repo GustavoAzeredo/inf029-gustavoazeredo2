@@ -23,7 +23,7 @@ typedef struct
 	char nome[15];
 	char codigo[10];
 	char professor[40];
-	int semestre;
+	char semestre[5];
 }cadastro;
 
 cadastro disciplinas[70];
@@ -32,7 +32,7 @@ cadastro disciplinas[70];
 
 	cadastro CadastrarDisciplina()
 	{
-		int opfinal, i=0, cont=1;
+		int op3, i=0, cont=1;
 		cadastro dis[70];
 
 		do
@@ -43,23 +43,21 @@ cadastro disciplinas[70];
 			gets(dis[i].codigo);setbuf(stdin,NULL);
 			printf("Digite o nome do professor: \n");
 			gets(dis[i].professor);setbuf(stdin,NULL);
-			printf("Digite o semestre da disciplina: \n");
-			scanf("%d",&dis[i].semestre);setbuf(stdin,NULL);
-			printf("\n\nMatricular outra disciplina, digite 1\n");
-			printf("Encerrar, digite 0.\n\n");
-			scanf("%d",&opfinal);setbuf(stdin,NULL);
-			if (opfinal==1)
+			printf("Digite o semestre da disciplina: \n\n");
+			gets(dis[i].semestre);setbuf(stdin,NULL);
+			printf("\n\nDigite 1: Para continuar.\n");
+			printf("Digite 0: Para encerrar.\n\n");
+			scanf("%d",&op3);setbuf(stdin,NULL);
+
+			if (op3==1)
 			{
 				i++;
 				cont++;
 			}
 			else
 			{
-				if (opfinal==0)
-				{
-					i++;
-					cont=cont;
-				}
+				i++;
+				cont=cont;
 			}
 		} while (i<cont);
 		
@@ -70,40 +68,76 @@ cadastro disciplinas[70];
 
 		dados CadastrarAluno()
 		{
-			dados alu;
+			int op3, i=0, cont=1;
+			dados alu[2000];
 
-			printf("Digite a matrícula do aluno: \n");
-			gets(alu.matricula);setbuf(stdin,NULL);
-			printf("Digite o nome do aluno: \n");
-			gets(alu.nome);setbuf(stdin,NULL);
-			printf("Digite o sexo do aluno: \n");
-			gets(alu.sexo);setbuf(stdin,NULL);
-			printf("Digite o cpf do aluno: \n");
-			gets(alu.cpf);setbuf(stdin,NULL);
-			printf("Digite a data de nascimento do aluno: \n");
-			scanf("%d%d%d",&alu.dia,&alu.mes,&alu.ano);setbuf(stdin,NULL);
+			do
+			{
+				printf("Digite a matrícula do aluno: \n");
+				gets(alu[i].matricula);setbuf(stdin,NULL);
+				printf("Digite o nome do aluno: \n");
+				gets(alu[i].nome);setbuf(stdin,NULL);
+				printf("Digite o sexo do aluno: \n");
+				gets(alu[i].sexo);setbuf(stdin,NULL);
+				printf("Digite o cpf do aluno: \n");
+				gets(alu[i].cpf);setbuf(stdin,NULL);
+				printf("Digite a data de nascimento do aluno: \n");
+				scanf("%d%d%d",&alu[i].dia,&alu[i].mes,&alu[i].ano);setbuf(stdin,NULL);
+				printf("\n\nDigite 1: Para continuar.\n");
+				printf("Digite 0: Para encerrar.\n\n");
+				scanf("%d",&op3);setbuf(stdin,NULL);
 
-			return alu;
+				if (op3==1)
+				{
+					i++;
+					cont++;
+				}
+				else
+				{
+					i++;
+					cont=cont;
+				}
+			} while (i<cont);
+
+			return alu[2000];
 		}
 
 		/*Função de CadastrarProfessor', que lê os dados do professores.*/
 
 		dados CadastrarProfessor()
 		{
-			dados prof;
+			int op3, i=0, cont=1;
+			dados prof[50];
 
-			printf("Digite a matrícula do professor: \n");
-			gets(prof.matricula);setbuf(stdin,NULL);
-			printf("Digite o nome do professor: \n");
-			gets(prof.nome);setbuf(stdin,NULL);
-			printf("Digite o sexo do professor: \n");
-			gets(prof.sexo);setbuf(stdin,NULL);
-			printf("Digite o cpf do professor: \n");
-			gets(prof.cpf);setbuf(stdin,NULL);
-			printf("Digite a data de nascimento do professor: \n");
-			scanf("%d%d%d",&prof.dia,&prof.mes,&prof.ano);setbuf(stdin,NULL);
+			do
+			{
+				printf("Digite a matrícula do professor: \n");
+				gets(prof[i].matricula);setbuf(stdin,NULL);
+				printf("Digite o nome do professor: \n");
+				gets(prof[i].nome);setbuf(stdin,NULL);
+				printf("Digite o sexo do professor: \n");
+				gets(prof[i].sexo);setbuf(stdin,NULL);
+				printf("Digite o cpf do professor: \n");
+				gets(prof[i].cpf);setbuf(stdin,NULL);
+				printf("Digite a data de nascimento do professor: \n");
+				scanf("%d%d%d",&prof[i].dia,&prof[i].mes,&prof[i].ano);setbuf(stdin,NULL);
+				printf("\n\nDigite 1: Para continuar.\n");
+				printf("Digite 0: Para encerrar.\n\n");
+				scanf("%d",&op3);setbuf(stdin,NULL);
+				
+				if (op3==1)
+				{
+					i++;
+					cont++;
+				}
+				else
+				{
+					i++;
+					cont=cont;
+				}
+			} while (i<cont);
 
-			return prof;
+			return prof[50];
 		}
 
 		/*Função 'MenuPrincipal'.*/
@@ -125,7 +159,7 @@ cadastro disciplinas[70];
 
 		/*Função 'MenuDisciplina'.*/
 
-		int MenuDisciplina ()
+		int MenuDisciplina()
 		{
 			int escolha, a;
 
@@ -139,7 +173,7 @@ cadastro disciplinas[70];
 
 		/*Função 'MenuAluno'.*/
 
-		int MenuAluno ()
+		int MenuAluno()
 		{
 			int escolha, a;
 
@@ -155,7 +189,7 @@ cadastro disciplinas[70];
 
 		/*Função 'MenuProfessor'.*/
 
-		int MenuProfessor ()
+		int MenuProfessor()
 		{
 			int escolha, a;
 

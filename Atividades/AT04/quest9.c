@@ -21,11 +21,11 @@ novo cadastrarcliente(char n[], int d, int m, int a, char c[], char s)
 	novo cc;
 
 	printf("Nome: \n");
-	gets(cc.nome);
+	gets(cc.nome);setbuf(stdin,NULL);
 	printf("Digite dia, mês e ano do nascimento: \n");
 	scanf("%d%d%d",&cc.dia,&cc.mes,&cc.ano);setbuf(stdin,NULL);
 	printf("Digite o CPF (apenas números): \n");
-	gets(cc.cpf);
+	gets(cc.cpf);setbuf(stdin,NULL);
 	printf("Sexo: \n");
 	scanf("%c",&cc.sexo);setbuf(stdin,NULL);
 
@@ -78,6 +78,47 @@ char validarsexo(char h[], char z[])
 		strcpy(z,"Inválido! Digite: 'm', 'n' ou 'o'.");
 	}
 }
+ /*Função 'validardata' que valida a data de nascimento do cliente.*/
+
+int validardata(int a, int b, int c)
+{
+	if ((a<=28)&&(b>=1&&b<=12)&&(c!=0))
+	{
+		printf("- Data: %d/%d/%d - Válida!\n",a,b,c);
+	}
+	else
+	{
+		if ((a==30)&&(b!=2)&&(c!=0))
+		{
+			printf("- Data: %d/%d/%d - Válida!\n",a,b,c);
+		}
+		else
+		{
+			if ((a==31)&&(b==1||b==3||b==5||b==7||b==8||b==10||b==12)&&(c!=0))
+			{
+				printf("- Data: %d/%d/%d - Válida!\n",a,b,c);
+			}
+			else
+			{
+				if ((a==29)&&(b==2)&&((c%4==0&&c%100!=0)||c%400==0))
+				{
+					printf("- Data: %d/%d/%d - Válida!\n",a,b,c);
+				}
+				else
+				{
+					if ((a==29)&&(b>=1&&b<=12&&b!=2)&&(c!=0))
+					{
+						printf("- Data: %d/%d/%d - Válida!\n",a,b,c);
+					}
+					else
+					{
+						printf("- Data: %d/%d/%d - Inválida!\n",a,b,c);
+					}
+				}
+			}
+		}
+	}
+}
 
 /*Função 'main' que imprime os dados.*/
 
@@ -105,6 +146,7 @@ int main()
 
 		printf("- Sexo: %c - %s\n",dados.sexo,vs);
 
+		validardata(dados.dia, dados.mes, dados.ano);
 
 		return 0;
 }
