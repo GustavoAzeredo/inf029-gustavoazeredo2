@@ -13,10 +13,10 @@ typedef struct
 	int ano;
 }dados;
 
-dados aluno[2000];
-dados professor[50];
+dados aluno[5];
+dados professor[5];
 
-/*Definição da struct de cadasdtro das disciplinas.*/
+/*Definição da struct de cadastro das disciplinas.*/
 
 typedef struct
 {
@@ -26,14 +26,14 @@ typedef struct
 	char semestre[5];
 }cadastro;
 
-cadastro disciplinas[70];
+cadastro disciplinas[5];
 
-/*Função de 'CadastrarDisciplina' que lê os dados das disciplinas.*/
+/*Função de 'InserirDisciplina'.*/
 
 	cadastro InserirDisciplina()
 	{
 		int op3, i=0, cont=1;
-		cadastro dis[70];
+		cadastro dis[5];
 
 		do
 		{
@@ -62,15 +62,15 @@ cadastro disciplinas[70];
 			}
 		} while (i<cont);
 		
-		return dis[70];
+		return dis[5];
 	}
 
-	/*Função de 'CadastrarAlunos' que lê os dados dos alunos.*/
+	/*Função de 'InserirAlunos'.*/
 
 		dados InserirAluno()
 		{
 			int op3, i=0, cont=1;
-			dados alu[2000];
+			dados alu[5];
 
 			do
 			{
@@ -101,15 +101,15 @@ cadastro disciplinas[70];
 				}
 			} while (i<cont);
 
-			return alu[2000];
+			return alu[5];
 		}
 
-		/*Função de CadastrarProfessor', que lê os dados do professores.*/
+		/*Função de InserirProfessor'.*/
 
 		dados InserirProfessor()
 		{
 			int op3, i=0, cont=1;
-			dados prof[50];
+			dados prof[5];
 
 			do
 			{
@@ -140,7 +140,7 @@ cadastro disciplinas[70];
 				}
 			} while (i<cont);
 
-			return prof[50];
+			return prof[5];
 		}
 
 		/*Função 'MenuPrincipal'.*/
