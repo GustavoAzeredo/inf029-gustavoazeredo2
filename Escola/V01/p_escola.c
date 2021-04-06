@@ -5,7 +5,7 @@
 
 typedef struct
 {
-	char matricula[10];
+	int matricula;
 	char nome[40];
 	char sexo;
 	char cpf[15];
@@ -64,21 +64,21 @@ cadastro disciplinas[5];
 
 		/*Função de 'InserirDisciplina'.*/
 
-		cadastro InserirDisciplina()
+		void InserirDisciplina()
 		{
-			int op3, i=0, cont=1;
-			cadastro dis[5];
+			int op3, op1, i=0, cont=1;
+			cadastro disciplina[5];
 
 			do
 			{
 				printf("Digite o nome da disciplina: \n");
-				gets(dis[i].nome);setbuf(stdin,NULL);
+				gets(disciplina[i].nome);setbuf(stdin,NULL);
 				printf("Digite o código da disciplina: \n");
-				gets(dis[i].codigo);setbuf(stdin,NULL);
+				gets(disciplina[i].codigo);setbuf(stdin,NULL);
 				printf("Digite o nome do professor: \n");
-				gets(dis[i].professor);setbuf(stdin,NULL);
+				gets(disciplina[i].professor);setbuf(stdin,NULL);
 				printf("Digite o semestre da disciplina: \n\n");
-				gets(dis[i].semestre);setbuf(stdin,NULL);
+				gets(disciplina[i].semestre);setbuf(stdin,NULL);
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
@@ -92,14 +92,22 @@ cadastro disciplinas[5];
 				{
 					i++;
 					cont=cont;
-					MenuPrincipal();
 				}
 			} while (i<cont);
-			
-			return dis[5];
+
+			printf("Código\tNome\tSemestre\n");
+			for (i = 0; i < cont; ++i)
+			{
+				printf("%s\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
+			}
+
+			op1 = loop();
 		}
 
 		/*Função ExcluirDisciplina*/
+
+
+
 		/*Função AtualizarDisciplina */
 
 
@@ -124,13 +132,10 @@ cadastro disciplinas[5];
 
 		void InserirAluno()
 		{
-			int op3, op1, i=0, cont=1;
-			dados aluno[5];
-
+			int op3, op1, i=0, cont=1, mataluno = 100;
+						
 			do
 			{
-				printf("Digite a matrícula do aluno: \n");
-				gets(aluno[i].matricula);
 				printf("Digite o nome do aluno: \n");
 				gets(aluno[i].nome);
 				printf("Digite o cpf do aluno: \n");
@@ -142,65 +147,96 @@ cadastro disciplinas[5];
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
-
+				aluno[i].matricula = mataluno + 1;
+				
 				if (op3==1)
 				{
 					i++;
 					cont++;
+					mataluno++;
 				}
 				else
 				{
 					i++;
 					cont=cont;
 				}
-			} while (i<cont);
+			} while (i!=cont && cont<=5);
 
-			printf("Matricula\tNome\tCPF\n");
-			for (i = 0; i < cont; ++i)
+			printf("\nAlunos Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+			for (int j = 0; j < cont; ++j)
 			{
-				printf("%s\t%s\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
+				printf("%d\t\t%s\t\t%s\n",aluno[j].matricula,aluno[j].nome,aluno[j].cpf);
 			}
 
 			op1 = loop();
-
-			
+			return ;
 		}
 
 		/*Função 'ExcuirAluno'.*/
 
-		dados ExcluirAluno()
+		void ExcluirAluno()
 		{
-			int i=0;
-			char exc[10], a[10]="Excluído";
-			
+			int excluir, cont=5, op1;
 
-			
+			printf("\nAlunos Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+			for (int i = 0; i < cont; ++i)
+			{
+				printf("%d\t\t%s\t\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
+			}
+
+			printf("\nDigite a matrícula que deseja excluir: \n");
+			scanf("%d",&excluir);setbuf(stdin,NULL);
+
+			int j=0;
 			do
 			{
-				if (strcmp(exc,aluno[i].matricula))
+				if (excluir==aluno[j].matricula)
 				{
-					i++;
+					aluno[j].matricula = -1;
 				}
 				else
 				{
-					strcpy(aluno[i].matricula,a);
-					i++;
+					j++;
 				}
-			} while (i<5);
+			} while (j<=cont);
 
-			printf("Matricula\tNome\tCPF\n");
-
-			for (int j = 0; j < 5; ++j)
+			int k=0;
+			do
 			{
-				printf("%s\t%s\t%s\n",aluno[j].matricula,aluno[j].nome,aluno[j].cpf);
+				if (aluno[k].matricula==-1)
+				{
+					do
+					{
+						aluno[k]=aluno[k+1];
+						k++;
+
+					} while (k<cont-1);
+				}
+				else
+				{
+					k++;
+				}
+			} while (k<cont);
+			
+			printf("\nAlunos Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+			for (int l = 0; l < cont; ++l)
+			{
+				printf("%d\t\t%s\t\t%s\n",aluno[l].matricula,aluno[l].nome,aluno[l].cpf);
 			}
-			return aluno[5];
+			
+			op1 = loop();
+			
+			return ;
 		}
 
 		/*Função AtualizarAluno*/
 
 
-	/*Função 'MenuProfessor'.*/
+
+		/*Função 'MenuProfessor'.*/
 
 	int MenuProfessor()
 	{
@@ -218,54 +254,62 @@ cadastro disciplinas[5];
 
 		/*Função de InserirProfessor'.*/
 
-		dados InserirProfessor()
+		void InserirProfessor()
 		{
-			int op3, op1, i=0, cont=1;
-			dados prof[5];
-
+			int op3, op1, i=0, cont=1, matprofessor = 1000;
+			
 			do
 			{
-				printf("Digite a matrícula do professor: \n");
-				gets(prof[i].matricula);setbuf(stdin,NULL);
+				
 				printf("Digite o nome do professor: \n");
-				gets(prof[i].nome);setbuf(stdin,NULL);
+				gets(professor[i].nome);setbuf(stdin,NULL);
 				printf("Digite o sexo do professor: \n");
-				gets(prof[i].sexo);setbuf(stdin,NULL);
+				gets(professor[i].sexo);setbuf(stdin,NULL);
 				printf("Digite o cpf do professor: \n");
-				gets(prof[i].cpf);setbuf(stdin,NULL);
+				gets(professor[i].cpf);setbuf(stdin,NULL);
 				printf("Digite a data de nascimento do professor: \n");
-				scanf("%d%d%d",&prof[i].dia,&prof[i].mes,&prof[i].ano);setbuf(stdin,NULL);
+				scanf("%d%d%d",&professor[i].dia,&professor[i].mes,&professor[i].ano);setbuf(stdin,NULL);
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
+				professor[i].matricula = matprofessor + 1;
 				
 				if (op3==1)
 				{
 					i++;
 					cont++;
+					matprofessor++;
 				}
 				else
 				{
 					i++;
 					cont=cont;
-					op1 = loop();
 				}
 			} while (i<cont);
 
-			return prof[5];
+			printf("Matricula\tNome\tCPF\n");
+			for (i = 0; i < cont; ++i)
+			{
+				printf("%d\t%s\t%s\n",professor[i].matricula,professor[i].nome,professor[i].cpf);
+			}
+
+			op1 = loop();
+			
 		}
 
 		/*Função ExcluirProfessor*/
+
+
+
 		/*Função AtualizarProfessor*/
 
 		
 
-		
-	/*Função Pirncipal*/
+	/*Função Pirncipal, "troca" de munu.*/
 
 	int loop()
 	{
-		int op1, op2;
+		int op1, op2, cont;
 		dados aluno[5];
 		do
 		{
@@ -281,7 +325,7 @@ cadastro disciplinas[5];
 					op2 = MenuDisciplina();
 					if (op2 == 1)
 					{
-						cadastro disc = InserirDisciplina();
+						InserirDisciplina();
 					}
 					else
 					{
@@ -319,7 +363,7 @@ cadastro disciplinas[5];
 						{
 							if (op2 == 2)
 							{
-								dados aluno = ExcluirAluno();
+								ExcluirAluno();
 							}
 							else
 							{
@@ -345,7 +389,7 @@ cadastro disciplinas[5];
 							op2 = MenuProfessor();
 							if (op2 == 1)
 							{
-								dados prof = InserirProfessor();
+								InserirProfessor();
 							}
 							else
 							{
@@ -378,6 +422,7 @@ cadastro disciplinas[5];
 				}
 			}
 		} while (op2 == 0 && op1 != 0);
+
 		return op1;
 	}	
 		
