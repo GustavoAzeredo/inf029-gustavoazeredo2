@@ -29,7 +29,7 @@ typedef struct
 
 cadastro disciplinas[5];
 
-	/*Função 'MenuPrincipal'.*/
+	/*Função 'MenuPrincipal', pergunta para qual submenu o usuário quer ir.*/
 
 	int MenuPrincipal()
 	{
@@ -46,23 +46,23 @@ cadastro disciplinas[5];
 		return escolha;
 	}
 
-	/*Função 'MenuDisciplina'.*/
+	/*Função 'MenuDisciplina', pergunta qual a ação o usuário quer fazer com as disciplinas.*/
 
 	int MenuDisciplina()
 	{
-		int escolha, a;
+		int escolha, b;
 
 		printf("\n- Digite 1: Para inserir disciplina.\n");
 		printf("\n- Digite 2: Para excluir disciplina.\n");
 		printf("\n- Digite 3: Para atualizar disciplina.\n");
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
-		scanf("%d",&a);setbuf(stdin,NULL);
+		scanf("%d",&b);setbuf(stdin,NULL);
 
-		escolha = a;
+		escolha = b;
 		return escolha;			
 	}
 
-		/*Função de 'InserirDisciplina'.*/
+		/*Função de 'InserirDisciplina', cadastra uma ou mais disciplinas.*/
 
 		void InserirDisciplina()
 		{
@@ -104,31 +104,31 @@ cadastro disciplinas[5];
 			op1 = loop();
 		}
 
-		/*Função ExcluirDisciplina*/
+		/*Função 'ExcluirDisciplina'.*/
 
 
 
-		/*Função AtualizarDisciplina */
+		/*Função 'AtualizarDisciplina'.*/
 
 
 
-	/*Função 'MenuAluno'.*/
+	/*Função 'MenuAluno', pergunta ao usuário qual a ação fazer com aluno.*/
 
 	int MenuAluno()
 	{
-		int escolha, a;
+		int escolha, c;
 
 		printf("\n- Digite 1: Para inserir aluno.\n");
 		printf("- Digite 2: Para excluir aluno.\n");		
 		printf("- Digite 3: Para atualizar aluno.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
-		scanf("%d",&a);setbuf(stdin,NULL);
+		scanf("%d",&c);setbuf(stdin,NULL);
 
-		escolha = a;
+		escolha = c;
 		return escolha;
 	}
 
-		/*Função de 'InserirAlunos'.*/
+		/*Função de 'InserirAlunos', cadastra um ou mais alunos.*/
 
 		void InserirAluno()
 		{
@@ -164,6 +164,7 @@ cadastro disciplinas[5];
 
 			printf("\nAlunos Cadastrados:\n\n");
 			printf("Matricula\tNome\t\tCPF\n\n");
+
 			for (int j = 0; j < cont; ++j)
 			{
 				printf("%d\t\t%s\t\t%s\n",aluno[j].matricula,aluno[j].nome,aluno[j].cpf);
@@ -173,7 +174,7 @@ cadastro disciplinas[5];
 			return ;
 		}
 
-		/*Função 'ExcuirAluno'.*/
+		/*Função 'ExcuirAluno', exclui um aluno cadastrado.*/
 
 		void ExcluirAluno()
 		{
@@ -190,6 +191,7 @@ cadastro disciplinas[5];
 			scanf("%d",&excluir);setbuf(stdin,NULL);
 
 			int j=0;
+
 			do
 			{
 				if (excluir==aluno[j].matricula)
@@ -203,6 +205,7 @@ cadastro disciplinas[5];
 			} while (j<=cont);
 
 			int k=0;
+
 			do
 			{
 				if (aluno[k].matricula==-1)
@@ -222,6 +225,7 @@ cadastro disciplinas[5];
 			
 			printf("\nAlunos Cadastrados:\n\n");
 			printf("Matricula\tNome\t\tCPF\n\n");
+
 			for (int l = 0; l < cont; ++l)
 			{
 				printf("%d\t\t%s\t\t%s\n",aluno[l].matricula,aluno[l].nome,aluno[l].cpf);
@@ -232,27 +236,27 @@ cadastro disciplinas[5];
 			return ;
 		}
 
-		/*Função AtualizarAluno*/
+		/*Função 'AtualizarAluno'.*/
 
 
 
-		/*Função 'MenuProfessor'.*/
+	/*Função 'MenuProfessor', pergunta ao usuário, qual ação realizar com professor.*/	
 
 	int MenuProfessor()
 	{
-		int escolha, a;
+		int escolha, d;
 
 		printf("\n- Digite 1: Para inserir professor.\n");
-		printf("\n- Digite 2: Para excluir professor.\n");
-		printf("\n- Digite 3: Para atualizar professor.\n");
+		printf("- Digite 2: Para excluir professor.\n");		
+		printf("- Digite 3: Para atualizar professor.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
-		scanf("%d",&a);setbuf(stdin,NULL);
+		scanf("%d",&d);setbuf(stdin,NULL);
 
-		escolha = a;
-		return escolha;	
+		escolha = d;
+		return escolha;
 	}
 
-		/*Função de InserirProfessor'.*/
+		/*Função 'InserirProfessor', cadastra um ou mais professor.*/
 
 		void InserirProfessor()
 		{
@@ -262,11 +266,11 @@ cadastro disciplinas[5];
 			{
 				
 				printf("Digite o nome do professor: \n");
-				gets(professor[i].nome);setbuf(stdin,NULL);
-				printf("Digite o sexo do professor: \n");
-				gets(professor[i].sexo);setbuf(stdin,NULL);
+				gets(professor[i].nome);
 				printf("Digite o cpf do professor: \n");
-				gets(professor[i].cpf);setbuf(stdin,NULL);
+				gets(professor[i].cpf);
+				printf("Digite o sexo do professor: \n");
+				scanf("%c",&professor[i].sexo);setbuf(stdin,NULL);
 				printf("Digite a data de nascimento do professor: \n");
 				scanf("%d%d%d",&professor[i].dia,&professor[i].mes,&professor[i].ano);setbuf(stdin,NULL);
 				printf("\n\nDigite 1: Para continuar.\n");
@@ -285,27 +289,87 @@ cadastro disciplinas[5];
 					i++;
 					cont=cont;
 				}
-			} while (i<cont);
-
-			printf("Matricula\tNome\tCPF\n");
-			for (i = 0; i < cont; ++i)
+			} while (i!=cont && cont<=5);
+			
+			printf("\nProfessores Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+			
+			for (int j = 0; j < cont; ++j)
 			{
-				printf("%d\t%s\t%s\n",professor[i].matricula,professor[i].nome,professor[i].cpf);
+				printf("%d\t\t%s\t\t%s\n",professor[j].matricula,professor[j].nome,professor[j].cpf);
 			}
 
 			op1 = loop();
-			
+			return ;
 		}
 
-		/*Função ExcluirProfessor*/
+		/*Função 'ExcuirProfessor', exclui um professor.*/
 
+		void ExcluirProfessor()
+		{
 
+			int excluir, cont=5, op1;
 
-		/*Função AtualizarProfessor*/
+			printf("\nProfessores Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+
+			for (int i = 0; i < cont; ++i)
+			{
+				printf("%d\t\t%s\t\t%s\n",professor[i].matricula,professor[i].nome,professor[i].cpf);
+			}
+
+			printf("\nDigite a matrícula que deseja excluir: \n");
+			scanf("%d",&excluir);setbuf(stdin,NULL);
+
+			int j=0;
+
+			do
+			{
+				if (excluir==professor[j].matricula)
+				{
+					professor[j].matricula = -1;
+				}
+				else
+				{
+					j++;
+				}
+			} while (j<=cont);
+
+			int k=0;
+
+			do
+			{
+				if (professor[k].matricula==-1)
+				{
+					do
+					{
+						professor[k]=professor[k+1];
+						k++;
+					} while (k<cont-1);
+				}
+				else
+				{
+					k++;
+				}
+			} while (k<cont);
+			
+			printf("\nProfessores Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+
+			for (int l = 0; l < cont; ++l)
+			{
+				printf("%d\t\t%s\t\t%s\n",professor[l].matricula,professor[l].nome,professor[l].cpf);
+			}
+			
+			op1 = loop();
+			return ;
+		}
+
+		/*Função 'AtualizarProfessor'.*/
 
 		
 
-	/*Função Pirncipal, "troca" de munu.*/
+	/*Função 'loop', "troca" de menu.*/
 
 	int loop()
 	{
@@ -331,13 +395,13 @@ cadastro disciplinas[5];
 					{
 						if (op2 == 2)
 						{
-							/*função exlcuir disciplina*/
+							/*função exlcuir disciplina.*/
 						}
 						else
 						{
 							if (op2 == 3)
 							{
-								/* função atualizar disciplina */
+								/* função atualizar disciplina.*/
 							}
 							else
 							{
@@ -369,7 +433,7 @@ cadastro disciplinas[5];
 							{
 								if (op2 == 3)
 								{
-									/* função atualizar aluno */
+									/* função atualizar aluno.*/
 								}
 								else
 								{
@@ -395,13 +459,13 @@ cadastro disciplinas[5];
 							{
 								if (op2 == 2)
 								{
-									/*função excluir professor*/
+									ExcluirProfessor();
 								}
 								else
 								{
 									if (op2 == 3)
 									{
-										/* função atualizar professor */
+										/* função atualizar professor.*/
 									}
 									else
 									{
@@ -426,7 +490,7 @@ cadastro disciplinas[5];
 		return op1;
 	}	
 		
-/*Função main*/
+/*Função main.*/
 
 int main(int argc, char const *argv[])
 {
