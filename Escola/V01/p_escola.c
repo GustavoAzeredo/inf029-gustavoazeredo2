@@ -22,12 +22,12 @@ dados professor[5];
 typedef struct
 {
 	char nome[15];
-	char codigo[10];
+	int codigo;
 	char professor[40];
 	char semestre[5];
 }cadastro;
 
-cadastro disciplinas[5];
+cadastro disciplina[5];
 
 	/*Função 'MenuPrincipal', pergunta para qual submenu o usuário quer ir.*/
 
@@ -66,15 +66,12 @@ cadastro disciplinas[5];
 
 		void InserirDisciplina()
 		{
-			int op3, op1, i=0, cont=1;
-			cadastro disciplina[5];
-
+			int op3, op1, i=0, cont=1, codigo = 0;
+			
 			do
 			{
 				printf("Digite o nome da disciplina: \n");
 				gets(disciplina[i].nome);setbuf(stdin,NULL);
-				printf("Digite o código da disciplina: \n");
-				gets(disciplina[i].codigo);setbuf(stdin,NULL);
 				printf("Digite o nome do professor: \n");
 				gets(disciplina[i].professor);setbuf(stdin,NULL);
 				printf("Digite o semestre da disciplina: \n\n");
@@ -82,31 +79,93 @@ cadastro disciplinas[5];
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
+				disciplina[i].codigo = codigo + 1;
 
 				if (op3==1)
 				{
 					i++;
 					cont++;
+					codigo++;
 				}
 				else
 				{
 					i++;
 					cont=cont;
 				}
-			} while (i<cont);
+			} while (i!=cont && i<=5);
 
-			printf("Código\tNome\tSemestre\n");
+			/*Listagem de disciplina.*/
+
+			printf("Código\tNome\tProfessor\tSemestre\n");
 			for (i = 0; i < cont; ++i)
 			{
-				printf("%s\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
+				printf("%d\t%s\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].professor,disciplina[i].semestre);
 			}
 
 			op1 = loop();
 		}
 
-		/*Função 'ExcluirDisciplina'.*/
+		/*Função 'ExcluirDisciplina', exclui uma disciplina.*/
 
+		void ExcluirDisciplina()
+		{
+			int excluir, cont=5, op1;
 
+			printf("\nDisciplinas Cadastrados:\n\n");
+			printf("Código\tNome\t\tSemestre\n\n");
+			for (int i = 0; i < cont; ++i)
+			{
+				printf("%d\t\t%s\t\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
+			}
+
+			printf("\nDigite o código que deseja excluir: \n");
+			scanf("%d",&excluir);setbuf(stdin,NULL);
+
+			int j=0;
+
+			do
+			{
+				if (excluir==disciplina[j].codigo)
+				{
+					disciplina[j].codigo = -1;
+				}
+				else
+				{
+					j++;
+				}
+			} while (j<=cont);
+
+			int k=0;
+
+			do
+			{
+				if (disciplina[k].codigo==-1)
+				{
+					do
+					{
+						disciplina[k]=disciplina[k+1];
+						k++;
+
+					} while (k<cont-1);
+				}
+				else
+				{
+					k++;
+				}
+			} while (k<cont);
+			
+			printf("\nDisciplinas Cadastrados:\n\n");
+			printf("Código\tNome\t\tSemestre\n\n");
+
+			for (int l = 0; l < cont; ++l)
+			{
+				printf("%d\t\t%s\t\t%s\n",disciplina[l].codigo,disciplina[l].nome,disciplina[l].semestre);
+			}
+			
+			op1 = loop();
+			
+			return ;
+		}
 
 		/*Função 'AtualizarDisciplina'.*/
 
@@ -162,12 +221,14 @@ cadastro disciplinas[5];
 				}
 			} while (i!=cont && cont<=5);
 
+			/*Listagem de Alunos*/
+
 			printf("\nAlunos Cadastrados:\n\n");
-			printf("Matricula\tNome\t\tCPF\n\n");
+			printf("Matricula\tNome\t\tCPF\tSexo\tData de Nascimento\n\n");
 
 			for (int j = 0; j < cont; ++j)
 			{
-				printf("%d\t\t%s\t\t%s\n",aluno[j].matricula,aluno[j].nome,aluno[j].cpf);
+				printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",aluno[j].matricula,aluno[j].nome,aluno[j].cpf,aluno[j].sexo,aluno[j].dia,aluno[j].mes,aluno[j].ano);
 			}
 
 			op1 = loop();
@@ -291,12 +352,14 @@ cadastro disciplinas[5];
 				}
 			} while (i!=cont && cont<=5);
 			
+			/*Listagem de Professores.*/
+
 			printf("\nProfessores Cadastrados:\n\n");
-			printf("Matricula\tNome\t\tCPF\n\n");
+			printf("Matricula\tNome\t\tCPF\tSexo\tData de Nascimento\n\n");
 			
 			for (int j = 0; j < cont; ++j)
 			{
-				printf("%d\t\t%s\t\t%s\n",professor[j].matricula,professor[j].nome,professor[j].cpf);
+				printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",professor[j].matricula,professor[j].nome,professor[j].cpf,professor[j].sexo,professor[j].dia,professor[j].mes,professor[j].ano);
 			}
 
 			op1 = loop();
@@ -395,7 +458,7 @@ cadastro disciplinas[5];
 					{
 						if (op2 == 2)
 						{
-							/*função exlcuir disciplina.*/
+							ExcluirDisciplina();
 						}
 						else
 						{
