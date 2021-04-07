@@ -167,7 +167,7 @@ cadastro disciplina[5];
 			return ;
 		}
 
-		/*Função 'AtualizarDisciplina'.*/
+		/*Função 'ListarDisciplina'.*/
 
 
 
@@ -224,7 +224,7 @@ cadastro disciplina[5];
 			/*Listagem de Alunos*/
 
 			printf("\nAlunos Cadastrados:\n\n");
-			printf("Matricula\tNome\t\tCPF\tSexo\tData de Nascimento\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
 
 			for (int j = 0; j < cont; ++j)
 			{
@@ -297,9 +297,47 @@ cadastro disciplina[5];
 			return ;
 		}
 
-		/*Função 'AtualizarAluno'.*/
+		/*Função 'ListarAluno', que lista os alunos por critérios específicos.*/
 
+		void ListarAluno()
+		{
+			int op1, op4;
 
+			printf("Digite 1: Para listar alunos por ordem alfabetica.\n");
+			printf("Digite 2: Para listar alunos por data de nascimento.\n");
+			printf("Digite 3: Para listar alunos por sexo.\n");
+			printf("Digite 0: Para voltar ao menu principal.\n");
+			scanf("%d",&op4);
+
+			switch(op4)
+			{
+				case 1:
+				{
+
+				}
+				break;
+				case 2:
+				{
+
+				}
+				break;
+				case 3:
+				{
+
+				}
+				break;
+				case 0:
+				{
+					op1 = loop();
+				}
+				break;
+				default:
+				{
+					printf("Opção inválida!\n");
+					ListarAluno();
+				}
+			}
+		}
 
 	/*Função 'MenuProfessor', pergunta ao usuário, qual ação realizar com professor.*/	
 
@@ -355,7 +393,7 @@ cadastro disciplina[5];
 			/*Listagem de Professores.*/
 
 			printf("\nProfessores Cadastrados:\n\n");
-			printf("Matricula\tNome\t\tCPF\tSexo\tData de Nascimento\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
 			
 			for (int j = 0; j < cont; ++j)
 			{
@@ -428,9 +466,47 @@ cadastro disciplina[5];
 			return ;
 		}
 
-		/*Função 'AtualizarProfessor'.*/
+		/*Função 'ListarProfessor', que lista os prfessores por critérios específicos.*/
 
-		
+		void ListarProfessor()
+		{
+			int op1, op4;
+
+			printf("Digite 1: Para listar professores por ordem alfabetica.\n");
+			printf("Digite 2: Para listar professores por data de nascimento.\n");
+			printf("Digite 3: Para listar professores por sexo.\n");
+			printf("Digite 0: Para voltar ao menu principal.\n");
+			scanf("%d",&op4);
+
+			switch(op4)
+			{
+				case 1:
+				{
+
+				}
+				break;
+				case 2:
+				{
+
+				}
+				break;
+				case 3:
+				{
+
+				}
+				break;
+				case 0:
+				{
+					op1 = loop();
+				}
+				break;
+				default:
+				{
+					printf("Opção inválida!\n");
+					ListarProfessor();
+				}
+			}
+		}
 
 	/*Função 'loop', "troca" de menu.*/
 
@@ -464,7 +540,7 @@ cadastro disciplina[5];
 						{
 							if (op2 == 3)
 							{
-								/* função atualizar disciplina.*/
+								/* função listar disciplina.*/
 							}
 							else
 							{
@@ -496,7 +572,7 @@ cadastro disciplina[5];
 							{
 								if (op2 == 3)
 								{
-									/* função atualizar aluno.*/
+									ListarAluno();
 								}
 								else
 								{
@@ -528,7 +604,7 @@ cadastro disciplina[5];
 								{
 									if (op2 == 3)
 									{
-										/* função atualizar professor.*/
+										ListarProfessor();
 									}
 									else
 									{
@@ -557,9 +633,24 @@ cadastro disciplina[5];
 
 int main(int argc, char const *argv[])
 {
-	int op1, op2;
+	int op1, op2, mesatual;
 
 	op1=loop();
 
+	printf("\nPara saber os aniversariantes do mês, digite o mês atual: \n\n");
+	scanf("%d\n",&mesatual);
+
+	for (int i = 0; i < 5; ++i)
+	{
+		if (mesatual==aluno[i].mes)
+		{
+			printf("%d\t%s\t%d/%d/%d\n",aluno[i].matricula,aluno[i].nome,aluno[i].dia,aluno[i].mes,aluno[i].ano);
+		}	
+		if (mesatual==professor[i].mes)
+		{
+			printf("%d\t%s\t%d/%d/%d\n",professor[i].matricula,professor[i].nome,professor[i].dia,professor[i].mes,professor[i].ano);
+		}
+	}
+	
 	return 0;
 }
