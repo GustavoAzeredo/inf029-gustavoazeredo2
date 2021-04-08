@@ -71,11 +71,11 @@ cadastro disciplina[5];
 			do
 			{
 				printf("Digite o nome da disciplina: \n");
-				gets(disciplina[i].nome);setbuf(stdin,NULL);
+				fgets(disciplina[i].nome,15,stdin);
 				printf("Digite o nome do professor: \n");
-				gets(disciplina[i].professor);setbuf(stdin,NULL);
+				fgets(disciplina[i].professor,40,stdin);
 				printf("Digite o semestre da disciplina: \n\n");
-				gets(disciplina[i].semestre);setbuf(stdin,NULL);
+				fgets(disciplina[i].semestre,5,stdin);
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
@@ -191,21 +191,36 @@ cadastro disciplina[5];
 
 		void InserirAluno()
 		{
-			int op3, op1, i=0, cont=1, mataluno = 100;
+			int op3, op1, i=0, cont=1, mataluno = 100, tn;
 						
 			do
 			{
-				printf("Digite o nome do aluno: \n");
-				gets(aluno[i].nome);
-				printf("Digite o cpf do aluno: \n");
-				gets(aluno[i].cpf);
-				printf("Digite o sexo do aluno: \n");
+				printf("\nDigite o nome do aluno: ");
+				fgets(aluno[i].nome,40,stdin);setbuf(stdin,NULL);
+
+					tn = strlen(aluno[i].nome);
+					if (aluno[i].nome[tn-1]=='\n')
+					{
+						aluno[i].nome[tn-1]='\0';
+					}
+
+				printf("Digite o cpf do aluno: ");
+				fgets(aluno[i].cpf,20,stdin);setbuf(stdin,NULL);
+
+					tn = strlen(aluno[i].cpf);
+					if (aluno[i].cpf[tn-1]=='\n')
+					{
+						aluno[i].cpf[tn-1]='\0';
+					}
+
+				printf("Digite o sexo do aluno: ");
 				scanf("%c",&aluno[i].sexo);setbuf(stdin,NULL);
-				printf("Digite a data de nascimento do aluno: \n");
+				printf("Digite a data de nascimento do aluno: ");
 				scanf("%d%d%d",&aluno[i].dia,&aluno[i].mes,&aluno[i].ano);setbuf(stdin,NULL);
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
-				scanf("%d",&op3);setbuf(stdin,NULL);
+				scanf("\n%d",&op3);setbuf(stdin,NULL);
+
 				aluno[i].matricula = mataluno + 1;
 				
 				if (op3==1)
@@ -243,10 +258,11 @@ cadastro disciplina[5];
 
 			printf("\nAlunos Cadastrados:\n\n");
 			printf("Matricula\tNome\t\tCPF\n\n");
-			for (int i = 0; i < cont; ++i)
-			{
-				printf("%d\t\t%s\t\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
-			}
+
+				for (int i = 0; i < cont; ++i)
+				{
+					printf("%d\t\t%s\t\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
+				}
 
 			printf("\nDigite a matrícula que deseja excluir: \n");
 			scanf("%d",&excluir);setbuf(stdin,NULL);
@@ -285,15 +301,14 @@ cadastro disciplina[5];
 			} while (k<cont);
 			
 			printf("\nAlunos Cadastrados:\n\n");
-			printf("Matricula\tNome\t\tCPF\n\n");
+			printf("Matricula\tNome\t\tCPF\n");
 
-			for (int l = 0; l < cont; ++l)
-			{
-				printf("%d\t\t%s\t\t%s\n",aluno[l].matricula,aluno[l].nome,aluno[l].cpf);
-			}
+				for (int l = 0; l < cont; ++l)
+				{
+					printf("%d\t\t%s\t\t%s\n",aluno[l].matricula,aluno[l].nome,aluno[l].cpf);
+				}
 			
 			op1 = loop();
-			
 			return ;
 		}
 
@@ -359,15 +374,28 @@ cadastro disciplina[5];
 
 		void InserirProfessor()
 		{
-			int op3, op1, i=0, cont=1, matprofessor = 1000;
+			int op3, op1, i=0, cont=1, matprofessor = 1000, tn;
 			
 			do
-			{
-				
+			{				
 				printf("Digite o nome do professor: \n");
-				gets(professor[i].nome);
+				fgets(professor[i].nome,40,stdin);
+
+					tn = strlen(professor[i].nome);
+					if (professor[i].nome[tn-1]=='\n')
+					{
+						professor[i].nome[tn-1]='\0';
+					}
+
 				printf("Digite o cpf do professor: \n");
-				gets(professor[i].cpf);
+				fgets(professor[i].cpf,15, stdin);
+
+					tn = strlen(professor[i].cpf);
+					if (professor[i].cpf[tn-1]=='\n')
+					{
+						professor[i].cpf[tn-1]='\0';
+					}
+
 				printf("Digite o sexo do professor: \n");
 				scanf("%c",&professor[i].sexo);setbuf(stdin,NULL);
 				printf("Digite a data de nascimento do professor: \n");
@@ -375,6 +403,7 @@ cadastro disciplina[5];
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
+
 				professor[i].matricula = matprofessor + 1;
 				
 				if (op3==1)
@@ -514,6 +543,7 @@ cadastro disciplina[5];
 	{
 		int op1, op2, cont;
 		dados aluno[5];
+		
 		do
 		{
 			op1 = MenuPrincipal();
@@ -633,24 +663,36 @@ cadastro disciplina[5];
 
 int main(int argc, char const *argv[])
 {
-	int op1, op2, mesatual;
+	int op1, op2, op5, mesatual;
 
 	op1=loop();
 
-	printf("\nPara saber os aniversariantes do mês, digite o mês atual: \n\n");
-	scanf("%d\n",&mesatual);
+	printf("\nQuer saber os aniversariantes do mês? \n\n");
+	printf("Digite 1: Para sim.\n");
+	printf("Digite 0: Para não.\n");
+	scanf("%d",&op5);
 
-	for (int i = 0; i < 5; ++i)
+	if (op5==0)
 	{
-		if (mesatual==aluno[i].mes)
+		printf("Sair!\n");
+	}
+	else
+	{
+		printf("Digite o mês atual: \n");
+		scanf("%d\n",&mesatual);
+
+		for (int i = 0; i < 5; ++i)
 		{
-			printf("%d\t%s\t%d/%d/%d\n",aluno[i].matricula,aluno[i].nome,aluno[i].dia,aluno[i].mes,aluno[i].ano);
-		}	
-		if (mesatual==professor[i].mes)
-		{
-			printf("%d\t%s\t%d/%d/%d\n",professor[i].matricula,professor[i].nome,professor[i].dia,professor[i].mes,professor[i].ano);
+			if (mesatual==aluno[i].mes)
+			{
+				printf("%d\t%s\t%d/%d/%d\n",aluno[i].matricula,aluno[i].nome,aluno[i].dia,aluno[i].mes,aluno[i].ano);
+			}	
+			if (mesatual==professor[i].mes)
+			{
+				printf("%d\t%s\t%d/%d/%d\n",professor[i].matricula,professor[i].nome,professor[i].dia,professor[i].mes,professor[i].ano);
+			}
 		}
 	}
-	
+		
 	return 0;
 }
