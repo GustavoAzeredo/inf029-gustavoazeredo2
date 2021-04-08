@@ -303,7 +303,7 @@ cadastro disciplina[5];
 		{
 			int op1, op4;
 
-			printf("Digite 1: Para listar alunos por ordem alfabetica.\n");
+			printf("Digite 1: Para listar alunos por ordem alfabética.\n");
 			printf("Digite 2: Para listar alunos por data de nascimento.\n");
 			printf("Digite 3: Para listar alunos por sexo.\n");
 			printf("Digite 0: Para voltar ao menu principal.\n");
