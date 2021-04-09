@@ -54,7 +54,7 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir disciplina.\n");
 		printf("\n- Digite 2: Para excluir disciplina.\n");
-		printf("\n- Digite 3: Para atualizar disciplina.\n");
+		printf("\n- Digite 3: Para listar disciplina.\n");
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&b);setbuf(stdin,NULL);
 
@@ -179,7 +179,7 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir aluno.\n");
 		printf("- Digite 2: Para excluir aluno.\n");		
-		printf("- Digite 3: Para atualizar aluno.\n");		
+		printf("- Digite 3: Para listar aluno.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&c);setbuf(stdin,NULL);
 
@@ -317,6 +317,7 @@ cadastro disciplina[5];
 		void ListarAluno()
 		{
 			int op1, op4;
+			dados lista[5];
 
 			printf("Digite 1: Para listar alunos por ordem alfabética.\n");
 			printf("Digite 2: Para listar alunos por data de nascimento.\n");
@@ -333,7 +334,52 @@ cadastro disciplina[5];
 				break;
 				case 2:
 				{
+					int v[5], t[5];
+					int aux=0, aux1=-1, aux2;
 
+					for (int i = 0; i < 5; ++i)
+					{
+						t[i]=-1;
+					}
+						for (int j = 0; j < 5; ++j)
+						{
+							v[j]=(((((aluno[j].ano)*100)+aluno[j].mes)*100)+aluno[j].dia);
+						}
+							for (int k = 0; k < 5; ++k)
+							{
+								aux=0;
+								for (int l = 0; l < 5; ++l)
+								{
+									if (v[k]>=v[l])
+									{
+										aux++;
+									}
+									else
+									{
+										aux=aux;
+									}
+								}
+								aux1++;
+								aux2=aux-1;
+								
+									for (int m = 0; m < 5; ++m)
+									{
+										if (aux2!=t[m])
+										{
+											aux2=aux2;
+										}
+										else
+										{
+											aux2--;
+										}
+									}
+									t[aux1]=aux2;
+									lista[aux2]=aluno[k];
+							}
+							for (int n = 0; n < 5; ++n)
+							{
+								printf("%d\t%s\t%d/%d/%d\n",lista[n].matricula,lista[n].nome,lista[n].dia,lista[n].mes,lista[n].ano);
+							}
 				}
 				break;
 				case 3:
@@ -362,7 +408,7 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir professor.\n");
 		printf("- Digite 2: Para excluir professor.\n");		
-		printf("- Digite 3: Para atualizar professor.\n");		
+		printf("- Digite 3: Para listar professor.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&d);setbuf(stdin,NULL);
 
@@ -516,7 +562,52 @@ cadastro disciplina[5];
 				break;
 				case 2:
 				{
+					int v[5], t[5];
+					int aux=0, aux1=-1, aux2;
 
+					for (int i = 0; i < 5; ++i)
+					{
+						t[i]=-1;
+					}
+						for (int j = 0; j < 5; ++j)
+						{
+							v[j]=(((((professor[j].ano)*100)+professor[j].mes)*100)+professor[j].dia);
+						}
+							for (int k = 0; k < 5; ++k)
+							{
+								aux=0;
+								for (int l = 0; l < 5; ++l)
+								{
+									if (v[k]>=v[l])
+									{
+										aux++;
+									}
+									else
+									{
+										aux=aux;
+									}
+								}
+								aux1++;
+								aux2=aux-1;
+								
+									for (int m = 0; m < 5; ++m)
+									{
+										if (aux2!=t[m])
+										{
+											aux2=aux2;
+										}
+										else
+										{
+											aux2--;
+										}
+									}
+									t[aux1]=aux2;
+									lista[aux2]=professor[k];
+							}
+							for (int n = 0; n < 5; ++n)
+							{
+								printf("%d\t%s\t%d/%d/%d\n",lista[n].matricula,lista[n].nome,lista[n].dia,lista[n].mes,lista[n].ano);
+							}
 				}
 				break;
 				case 3:
