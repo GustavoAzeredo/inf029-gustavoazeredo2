@@ -179,7 +179,8 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir aluno.\n");
 		printf("- Digite 2: Para excluir aluno.\n");		
-		printf("- Digite 3: Para listar aluno.\n");		
+		printf("- Digite 3: Para listar aluno.\n");
+		printf("- Digite 4: Para atualizar aluno.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&c);setbuf(stdin,NULL);
 
@@ -319,11 +320,11 @@ cadastro disciplina[5];
 			int op1, op4;
 			dados lista[5];
 
-			printf("Digite 1: Para listar alunos por ordem alfabética.\n");
+			printf("\nDigite 1: Para listar alunos por ordem alfabética.\n");
 			printf("Digite 2: Para listar alunos por data de nascimento.\n");
 			printf("Digite 3: Para listar alunos por sexo.\n");
 			printf("Digite 0: Para voltar ao menu principal.\n");
-			scanf("%d",&op4);
+			scanf("%d\n",&op4);
 
 			switch(op4)
 			{
@@ -378,7 +379,15 @@ cadastro disciplina[5];
 							}
 							for (int n = 0; n < 5; ++n)
 							{
-								printf("%d\t%s\t%d/%d/%d\n",lista[n].matricula,lista[n].nome,lista[n].dia,lista[n].mes,lista[n].ano);
+								if (lista[n].matricula<=100)
+								{
+									printf("");
+								}
+								else
+								{
+									printf("%d\t%s\t%d/%d/%d\n",lista[n].matricula,lista[n].nome,lista[n].dia,lista[n].mes,lista[n].ano);
+								}
+								
 							}
 				}
 				break;
@@ -398,6 +407,61 @@ cadastro disciplina[5];
 					ListarAluno();
 				}
 			}
+		}
+
+		/*Função 'AtualizarAluno', que serve para modificar os dados cadastrados de forma interativa.*/
+
+		void AtualizarAluno()
+		{
+			int atualizar, cont=5, op1, tn;
+
+			printf("\nAlunos Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
+
+				for (int i = 0; i < cont; ++i)
+				{
+					printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf,aluno[i].sexo,aluno[i].dia,aluno[i].mes,aluno[i].ano);
+				}
+
+			printf("\nDigite a matrícula que deseja atualizar: \n");
+			scanf("%d",&atualizar);setbuf(stdin,NULL);
+
+			for (int j = 0; j < cont; ++j)
+			{
+				if (aluno[j].matricula==atualizar)
+				{
+					printf("\nDigite o nome do aluno: ");
+					fgets(aluno[j].nome,40,stdin);setbuf(stdin,NULL);
+
+					tn = strlen(aluno[j].nome);
+					if (aluno[j].nome[tn-1]=='\n')
+					{
+						aluno[j].nome[tn-1]='\0';
+					}
+
+					printf("Digite o cpf do aluno: ");
+					fgets(aluno[j].cpf,20,stdin);setbuf(stdin,NULL);
+
+						tn = strlen(aluno[j].cpf);
+					if (aluno[j].cpf[tn-1]=='\n')
+					{
+						aluno[j].cpf[tn-1]='\0';
+					}
+
+					printf("Digite o sexo do aluno: ");
+					scanf("%c",&aluno[j].sexo);setbuf(stdin,NULL);
+					printf("Digite a data de nascimento do aluno: ");
+					scanf("%d%d%d",&aluno[j].dia,&aluno[j].mes,&aluno[j].ano);setbuf(stdin,NULL);
+				}
+			}
+
+			printf("\nCadastro Atualizado:\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
+
+				for (int k = 0; k < cont; ++k)
+				{
+					printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",aluno[k].matricula,aluno[k].nome,aluno[k].cpf,aluno[k].sexo,aluno[k].dia,aluno[k].mes,aluno[k].ano);
+				}
 		}
 
 	/*Função 'MenuProfessor', pergunta ao usuário, qual ação realizar com professor.*/	
@@ -546,12 +610,13 @@ cadastro disciplina[5];
 		void ListarProfessor()
 		{
 			int op1, op4;
+			dados lista[5];
 
-			printf("Digite 1: Para listar professores por ordem alfabetica.\n");
+			printf("\nDigite 1: Para listar professores por ordem alfabetica.\n");
 			printf("Digite 2: Para listar professores por data de nascimento.\n");
 			printf("Digite 3: Para listar professores por sexo.\n");
 			printf("Digite 0: Para voltar ao menu principal.\n");
-			scanf("%d",&op4);
+			scanf("%d\n",&op4);
 
 			switch(op4)
 			{
@@ -628,6 +693,61 @@ cadastro disciplina[5];
 			}
 		}
 
+		/*Função 'AtualizarProfessor', que serve para modificar os dados cadastrados de forma interativa.*/
+
+		void AtualizarProfessor()
+		{
+			int atualizar, cont=5, op1, tn;
+
+			printf("\nProfessores Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
+
+				for (int i = 0; i < cont; ++i)
+				{
+					printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",professor[i].matricula,professor[i].nome,professor[i].cpf,professor[i].sexo,professor[i].dia,professor[i].mes,professor[i].ano);
+				}
+
+			printf("\nDigite a matrícula que deseja atualizar: \n");
+			scanf("%d",&atualizar);setbuf(stdin,NULL);
+
+			for (int j = 0; j < cont; ++j)
+			{
+				if (professor[j].matricula==atualizar)
+				{
+					printf("\nDigite o nome do professor: ");
+					fgets(professor[j].nome,40,stdin);setbuf(stdin,NULL);
+
+					tn = strlen(professor[j].nome);
+					if (professor[j].nome[tn-1]=='\n')
+					{
+						professor[j].nome[tn-1]='\0';
+					}
+
+					printf("Digite o cpf do professor: ");
+					fgets(professor[j].cpf,20,stdin);setbuf(stdin,NULL);
+
+						tn = strlen(professor[j].cpf);
+					if (professor[j].cpf[tn-1]=='\n')
+					{
+						professor[j].cpf[tn-1]='\0';
+					}
+
+					printf("Digite o sexo do professor: ");
+					scanf("%c",&professor[j].sexo);setbuf(stdin,NULL);
+					printf("Digite a data de nascimento do professor: ");
+					scanf("%d%d%d",&professor[j].dia,&professor[j].mes,&professor[j].ano);setbuf(stdin,NULL);
+				}
+			}
+
+			printf("\nCadastro Atualizado:\n\n");
+			printf("Matricula\tNome\t\tCPF\t\tSexo\tData de Nascimento\n\n");
+
+				for (int k = 0; k < cont; ++k)
+				{
+					printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",professor[k].matricula,professor[k].nome,professor[k].cpf,professor[k].sexo,professor[k].dia,professor[k].mes,professor[k].ano);
+				}
+		}
+
 	/*Função 'loop', "troca" de menu.*/
 
 	int loop()
@@ -697,11 +817,19 @@ cadastro disciplina[5];
 								}
 								else
 								{
-									if (op2 != 0 && op2 > 3)
+									if (op2 == 4)
 									{
-										printf("\nOpção Inválida!\n");
-										op2 = MenuAluno();
+										AtualizarAluno();
 									}
+									else
+									{
+										if (op2 != 0 && op2 > 3)
+										{
+											printf("\nOpção Inválida!\n");
+											op2 = MenuAluno();
+										}
+									}
+									
 								}
 							}
 						}
