@@ -167,7 +167,7 @@ cadastro disciplina[5];
 			return ;
 		}
 
-		/*Função 'ListarDisciplina'.*/
+		/*Função 'ListarDisciplina', que lista as disciplinas com os alunos matriculados.*/
 
 
 
