@@ -23,7 +23,8 @@ typedef struct
 {
 	char nome[15];
 	int codigo;
-	char professor[40];
+	dados professor;
+	dados aluno[5];
 	char semestre[5];
 }cadastro;
 
@@ -53,8 +54,8 @@ cadastro disciplina[5];
 		int escolha, b;
 
 		printf("\n- Digite 1: Para inserir disciplina.\n");
-		printf("\n- Digite 2: Para excluir disciplina.\n");
-		printf("\n- Digite 3: Para listar disciplina.\n");
+		printf("- Digite 2: Para excluir disciplina.\n");
+		printf("- Digite 3: Para listar disciplina.\n");
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&b);setbuf(stdin,NULL);
 
@@ -66,19 +67,43 @@ cadastro disciplina[5];
 
 		void InserirDisciplina()
 		{
-			int op3, op1, i=0, cont=1, codigo = 0;
+			int op3, op1, i=0, cont=1, codigo = 0, inserir, tn;
 			
 			do
 			{
-				printf("Digite o nome da disciplina: \n");
+				printf("\nDigite o nome da disciplina: ");
 				fgets(disciplina[i].nome,15,stdin);
-				printf("Digite o nome do professor: \n");
-				fgets(disciplina[i].professor,40,stdin);
-				printf("Digite o semestre da disciplina: \n\n");
+
+				tn = strlen(disciplina[i].nome);
+				if (disciplina[i].nome[tn-1]=='\n')
+				{
+					disciplina[i].nome[tn-1]='\0';
+				}
+
+				printf("Digite o semestre da disciplina: ");
 				fgets(disciplina[i].semestre,5,stdin);
+
+				tn = strlen(disciplina[i].semestre);
+				if (disciplina[i].semestre[tn-1]=='\n')
+				{
+					disciplina[i].semestre[tn-1]='\0';
+				}
+
+				printf("\n\nProfessores Cadastrados:\n\n");
+				printf("Matricula\tNome\n\n");
+				
+				for (int j = 0; j < cont; ++j)
+				{
+					printf("%d\t\t%s\n",professor[j].matricula,professor[j].nome);
+				}
+
+				printf("\nDigite a matricula do professor que irá lecionar essa disciplina: ");
+				scanf("%d",&inserir);setbuf(stdin,NULL);
+				
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
 				scanf("%d",&op3);setbuf(stdin,NULL);
+
 				disciplina[i].codigo = codigo + 1;
 
 				if (op3==1)
@@ -96,11 +121,20 @@ cadastro disciplina[5];
 
 			/*Listagem de disciplina.*/
 
-			printf("Código\tNome\tProfessor\tSemestre\n");
+			printf("\nCódigo\tNome\t\tSemestre\n\n");
 			for (i = 0; i < cont; ++i)
 			{
-				printf("%d\t%s\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].professor,disciplina[i].semestre);
+				printf("%d\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
 			}
+				for (int j = 0; j < cont; ++j)
+				{
+					if (inserir==professor[j].matricula)
+					{
+						printf("\nProfessor:\n");
+						printf("\nMatricula\tNome\n\n");
+						printf("%d\t\t%s\n",professor[j].matricula,professor[j].nome);
+					}
+				}
 
 			op1 = loop();
 		}
@@ -381,7 +415,7 @@ cadastro disciplina[5];
 							{
 								if (lista[n].matricula<=100)
 								{
-									printf("");
+									printf("\t");
 								}
 								else
 								{
@@ -488,7 +522,7 @@ cadastro disciplina[5];
 			
 			do
 			{				
-				printf("Digite o nome do professor: \n");
+				printf("\nDigite o nome do professor: ");
 				fgets(professor[i].nome,40,stdin);
 
 					tn = strlen(professor[i].nome);
@@ -497,7 +531,7 @@ cadastro disciplina[5];
 						professor[i].nome[tn-1]='\0';
 					}
 
-				printf("Digite o cpf do professor: \n");
+				printf("Digite o cpf do professor: ");
 				fgets(professor[i].cpf,15, stdin);
 
 					tn = strlen(professor[i].cpf);
@@ -506,9 +540,9 @@ cadastro disciplina[5];
 						professor[i].cpf[tn-1]='\0';
 					}
 
-				printf("Digite o sexo do professor: \n");
+				printf("Digite o sexo do professor: ");
 				scanf("%c",&professor[i].sexo);setbuf(stdin,NULL);
-				printf("Digite a data de nascimento do professor: \n");
+				printf("Digite a data de nascimento do professor: ");
 				scanf("%d%d%d",&professor[i].dia,&professor[i].mes,&professor[i].ano);setbuf(stdin,NULL);
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
@@ -888,12 +922,12 @@ int main(int argc, char const *argv[])
 
 	printf("\nQuer saber os aniversariantes do mês? \n\n");
 	printf("Digite 1: Para sim.\n");
-	printf("Digite 0: Para não.\n");
+	printf("Digite 0: Para não.\n\n");
 	scanf("%d",&op5);
 
 	if (op5==0)
 	{
-		printf("Sair!\n");
+		printf("\nSair!\n");
 	}
 	else
 	{
