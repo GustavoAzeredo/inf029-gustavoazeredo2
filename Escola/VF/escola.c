@@ -56,6 +56,7 @@ cadastro disciplina[5];
 		printf("\n- Digite 1: Para inserir disciplina.\n");
 		printf("- Digite 2: Para excluir disciplina.\n");
 		printf("- Digite 3: Para listar disciplina.\n");
+		printf("- Digite 4: Para atualizar disciplina.\n");
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&b);setbuf(stdin,NULL);
 
@@ -69,7 +70,7 @@ cadastro disciplina[5];
 		{
 			int op3, op1, i=0, cont=5, aux=1, codigo = 0;
 			int inserir, tn;
-			dados docente;
+			dados docente[5];
 			do
 			{
 				printf("\nDigite o nome da disciplina: ");
@@ -104,7 +105,7 @@ cadastro disciplina[5];
 				{
 					if (inserir==professor[k].matricula)
 					{
-						docente=professor[k];
+						docente[i]=professor[k];
 					}
 				}
 				
@@ -131,12 +132,11 @@ cadastro disciplina[5];
 
 			printf("\nDisciplinas cadastradas: \n");
 			printf("\nCódigo\tNome\t\tSemestre\tProfessor(matricula/nome)\n\n");
-			for (int l = 0; l < cont; ++l)
+			for (int l = 0; l < aux; ++l)
 			{
-				printf("%d\t%s\t%s\t\t%d %s\n",disciplina[l].codigo,disciplina[l].nome,disciplina[l].semestre,docente.matricula,docente.nome);
+				printf("%d\t%s\t%s\t\t%d %s\n",disciplina[l].codigo,disciplina[l].nome,disciplina[l].semestre,docente[l].matricula,docente[l].nome);
 			}
 			
-
 			op1 = loop();
 		}
 
@@ -507,7 +507,8 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir professor.\n");
 		printf("- Digite 2: Para excluir professor.\n");		
-		printf("- Digite 3: Para listar professor.\n");		
+		printf("- Digite 3: Para listar professor.\n");
+		printf("- Digite 4: Para atualizar professor.\n");		
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&d);setbuf(stdin,NULL);
 
@@ -864,7 +865,6 @@ cadastro disciplina[5];
 											op2 = MenuAluno();
 										}
 									}
-									
 								}
 							}
 						}
@@ -892,10 +892,17 @@ cadastro disciplina[5];
 									}
 									else
 									{
-										if (op2 != 0 && op2 >3)
+										if (op2==4)
 										{
-											printf("Opção inválida!\n");
-											op2 = MenuProfessor();
+											AtualizarProfessor();
+										}
+										else
+										{
+											if (op2 != 0 && op2 >3)
+											{
+												printf("Opção inválida!\n");
+												op2 = MenuProfessor();
+											}
 										}
 									}
 								}
