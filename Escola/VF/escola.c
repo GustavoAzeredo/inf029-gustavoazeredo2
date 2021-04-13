@@ -55,8 +55,9 @@ cadastro disciplina[5];
 
 		printf("\n- Digite 1: Para inserir disciplina.\n");
 		printf("- Digite 2: Para excluir disciplina.\n");
-		printf("- Digite 3: Para listar disciplina.\n");
-		printf("- Digite 4: Para atualizar disciplina.\n");
+		printf("- Digite 3: Para matricular aluno.\n");
+		printf("- Digite 4: Para listar disciplina.\n");
+		printf("- Digite 5: Para atualizar disciplina.\n");
 		printf("- Digite 0: Para voltar ao menu principal.\n\n");
 		scanf("%d",&b);setbuf(stdin,NULL);
 
@@ -202,9 +203,74 @@ cadastro disciplina[5];
 			return ;
 		}
 
+		/*Função MatricularAluno', que matricula um aluno em uma ou mais disciplina.*/
+
+		void MatricularAluno()
+		{
+			int matricular, inserir;
+			int cont=5;
+			cadastro discente;
+
+			printf("\nAlunos Cadastrados:\n\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
+
+				for (int i = 0; i < cont; ++i)
+				{
+					printf("%d\t\t%s\t\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
+				}
+
+			printf("\nDigite a matrícula que deseja matricular: \n");
+			scanf("%d",&matricular);setbuf(stdin,NULL);
+
+			printf("\nDisciplinas Cadastrados:\n\n");
+			printf("Código\tNome\t\tSemestre\n\n");
+
+				for (i = 0; i < cont; ++i)
+				{
+					printf("%d\t\t%s\t\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
+				}
+
+			printf("\nDigite o código da disciplina na qual o aluno será matriculado: \n");
+			scanf("%d",&inserir);setbuf(stdin,NULL);
+
+			for (i = 0; i < cont; ++i)
+			{
+				for (int j = 0; j < cont; ++j)
+				{
+					for (int k = 0; k < cont; ++k)
+					{
+						if (matricular==aluno[j].matricula && inserir==disciplina[k].codigo)
+						{
+							discente[i]=aluno[j];
+						}
+					}
+				}
+			}
+		}
+
 		/*Função 'ListarDisciplina', que lista as disciplinas com os alunos matriculados.*/
 
+		void ListarDisciplina();
+		{
+			printf("\nDisciplinas cadastradas: \n");
+			printf("\nCódigo\tNome\t\tSemestre\tProfessor(matricula/nome)\n\n");
+			for (int l = 0; l < aux; ++l)
+			{
+				printf("%d\t%s\t%s\t\t%d %s\n",disciplina[l].codigo,disciplina[l].nome,disciplina[l].semestre,docente[l].matricula,docente[l].nome);
+			}
+			printf("\nAlunos matriculados:\n");
+			printf("Matricula\tNome\t\tCPF\n\n");
 
+			for (int j = 0; j < cont; ++j)
+			{
+				printf("%d\t\t%s\t\t%s\t%c\t%d/%d/%d\n",discente[j].matricula,discente[j].nome,discente[j].cpf);
+			}
+		}
+
+		void AtualizarDisciplina()
+		{
+			
+		}
 
 	/*Função 'MenuAluno', pergunta ao usuário qual a ação fazer com aluno.*/
 
@@ -817,14 +883,28 @@ cadastro disciplina[5];
 						{
 							if (op2 == 3)
 							{
-								/* função listar disciplina.*/
+								MatricularAluno();
 							}
 							else
 							{
-								if (op2 != 0 && op2 >3)
+								if (op2 == 4)
 								{
-									printf("Opção inválida!\n");
-									op2 = MenuDisciplina();
+									ListarDisciplina();
+								}
+								else
+								{
+									if (op2 == 5)
+									{
+										AtualizarDisciplina();
+									}
+									else
+									{
+										if (op2 != 0 && op2 >3)
+										{
+											printf("Opção inválida!\n");
+											op2 = MenuDisciplina();
+										}
+									}
 								}
 							}
 						}
