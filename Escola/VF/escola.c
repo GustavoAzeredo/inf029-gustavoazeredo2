@@ -36,7 +36,7 @@ cadastro disciplina[5];
 	{
 		int escolha, a;
 
-		printf("\nBem vindo ao sistema eletrônico da Escola Isacc Newton!\n\n");
+		printf("\nBem vindo ao sistema eletrônico!\n\n");
 		printf("- Digite 1: Para disciplina.\n");	
 		printf("- Digite 2: Para aluno.\n");	
 		printf("- Digite 3: Para professor.\n");	
@@ -67,8 +67,9 @@ cadastro disciplina[5];
 
 		void InserirDisciplina()
 		{
-			int op3, op1, i=0, cont=1, codigo = 0, inserir, tn;
-			
+			int op3, op1, i=0, cont=5, aux=1, codigo = 0;
+			int inserir, tn;
+			dados docente;
 			do
 			{
 				printf("\nDigite o nome da disciplina: ");
@@ -99,6 +100,13 @@ cadastro disciplina[5];
 
 				printf("\nDigite a matricula do professor que irá lecionar essa disciplina: ");
 				scanf("%d",&inserir);setbuf(stdin,NULL);
+				for (int k = 0; k < cont; ++k)
+				{
+					if (inserir==professor[k].matricula)
+					{
+						docente=professor[k];
+					}
+				}
 				
 				printf("\n\nDigite 1: Para continuar.\n");
 				printf("Digite 0: Para encerrar.\n\n");
@@ -109,32 +117,25 @@ cadastro disciplina[5];
 				if (op3==1)
 				{
 					i++;
-					cont++;
+					aux++;
 					codigo++;
 				}
 				else
 				{
 					i++;
-					cont=cont;
+					aux=aux;
 				}
-			} while (i!=cont && i<=5);
+			} while (i!=aux && i<=5);
 
 			/*Listagem de disciplina.*/
 
-			printf("\nCódigo\tNome\t\tSemestre\n\n");
-			for (i = 0; i < cont; ++i)
+			printf("\nDisciplinas cadastradas: \n");
+			printf("\nCódigo\tNome\t\tSemestre\tProfessor(matricula/nome)\n\n");
+			for (int l = 0; l < cont; ++l)
 			{
-				printf("%d\t%s\t%s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre);
+				printf("%d\t%s\t%s\t\t%d %s\n",disciplina[l].codigo,disciplina[l].nome,disciplina[l].semestre,docente.matricula,docente.nome);
 			}
-				for (int j = 0; j < cont; ++j)
-				{
-					if (inserir==professor[j].matricula)
-					{
-						printf("\nProfessor:\n");
-						printf("\nMatricula\tNome\n\n");
-						printf("%d\t\t%s\n",professor[j].matricula,professor[j].nome);
-					}
-				}
+			
 
 			op1 = loop();
 		}
