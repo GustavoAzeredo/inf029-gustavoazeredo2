@@ -243,7 +243,7 @@ int main(int argc, char const *argv[])
 			op1 = loop();
 		}
 
-		void MatricularAluno()/**/
+		void MatricularAluno()
 		{
 			int matricular, inserir, op1;
 			int cont=5;
@@ -258,8 +258,9 @@ int main(int argc, char const *argv[])
 						printf("%d\t\t%s\t\t%s\n",aluno[i].matricula,aluno[i].nome,aluno[i].cpf);
 					}
 				}
-			printf("\nDigite a matrícula que deseja matricular: ");
+			printf("\nDigite a matrícula do aluno que deseja matricular na disciplina: ");
 			scanf("%d",&matricular);setbuf(stdin,NULL);
+			
 			printf("\nDisciplinas Cadastrados:\n\n");
 			printf("Código\tNome\t\tSemestre\n\n");
 				for (int i = 0; i < cont; ++i)
@@ -284,10 +285,10 @@ int main(int argc, char const *argv[])
 						}
 					}
 				}
-				op1 = loop();
+			op1 = loop();
 		}
 
-		void ListarDisciplina()/**/
+		void ListarDisciplina()/*Dando erro.*/
 		{
 			int cont=5,op1;
 			dados discente[5];
@@ -295,20 +296,22 @@ int main(int argc, char const *argv[])
 
 			printf("\nDisciplinas cadastradas: \n");
 			printf("\nCódigo\tNome\t\tSemestre\tProfessor(matricula/nome)\n\n");
-			for (int i = 0; i < cont; ++i)
-			{
-				if (disciplina[i].codigo>=0)
+				for (int i = 0; i < cont; ++i)
 				{
-					printf("%d\t%s\t%s\t\t%d %s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre,docente[i].matricula,docente[i].nome);
+					if (disciplina[i].codigo>=1)
+					{
+						printf("%d\t%s\t%s\t\t%d %s\n",disciplina[i].codigo,disciplina[i].nome,disciplina[i].semestre,docente[i].matricula,docente[i].nome);
+					}			
 				}
-			}
 			printf("\nAlunos matriculados:\n");
 			printf("Matricula\tNome\t\tCPF\n\n");
-
-			for (int i = 0; i < cont; ++i)
-			{
-				printf("%d\t\t%s\t\t%s\n",discente[i].matricula,discente[i].nome,discente[i].cpf);
-			}
+				for (int i = 0; i < cont; ++i)
+				{
+					if (discente[i].matricula>=100)
+					{
+						printf("%d\t\t%s\t\t%s\n",discente[i].matricula,discente[i].nome,discente[i].cpf);
+					}
+				}
 			op1 = loop();
 		}
 
