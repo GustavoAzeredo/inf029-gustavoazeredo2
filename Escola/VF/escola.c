@@ -112,7 +112,7 @@ int main(int argc, char const *argv[])
 		return escolha;			
 	}
 	
-		void InserirDisciplina()
+		void InserirDisciplina()/*Lista de disciplinas, sem os alunos.*/
 		{
 			int op3, op1, i=0, cont=5, aux=1, codigo = 0;
 			int inserir, tn;
@@ -377,7 +377,7 @@ int main(int argc, char const *argv[])
 		return escolha;
 	}
 
-		void InserirAluno()
+		void InserirAluno()/*Lista de alunos.*/
 		{
 			int op3, op1, i=0, aux=1, mataluno = 100, tn, cont=5;
 						
@@ -494,7 +494,7 @@ int main(int argc, char const *argv[])
 			op1 = loop();
 		}
 
-		void ListarAluno()
+		void ListarAluno()/*Incompleto*/
 		{
 			int op1, op4;
 			dados lista[5];
@@ -654,7 +654,7 @@ int main(int argc, char const *argv[])
 		return escolha;
 	}
 
-		void InserirProfessor()
+		void InserirProfessor()/*Lista de professores.*/
 		{
 			int op3, op1, i=0, aux=1, cont=5, matprofessor = 1000, tn;
 			
@@ -771,7 +771,7 @@ int main(int argc, char const *argv[])
 			op1 = loop();
 		}
 
-		void ListarProfessor()
+		void ListarProfessor()/*Incompleto.*/
 		{
 			int op1, op4;
 			dados lista[5];
