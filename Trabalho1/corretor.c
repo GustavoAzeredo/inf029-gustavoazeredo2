@@ -200,7 +200,7 @@ void testQ3()
     printf("%d\n", q3(str, 'a', 0) == 3);
     printf("%d\n", q3(str, 'b', 0) == 0);
     printf("%d\n", q3(str, 'l', 1) == 0);
-    printf("%d\n", q3(str, 'l', 0) == 0);
+    printf("%d\n", q3(str, 'l', 0) == 1);
     printf("%d\n", q3(str, 'L', 0) == 1);
     strcpy(str, "Gustavo Rodrigues de Azeredo Coutinho");
     printf("%d\n", q3(str, 'a', 0) == 2);
@@ -208,6 +208,12 @@ void testQ3()
     printf("%d\n", q3(str, 'i', 0) == 2);
     printf("%d\n", q3(str, 'o', 0) == 5);
     printf("%d\n", q3(str, 'u', 0) == 3);
+    strcpy(str, "Rainara Conceição Resende");
+    printf("%d\n", q3(str, 'a', 0) == 3);
+    printf("%d\n", q3(str, 'c', 0) == 2);
+    printf("%d\n", q3(str, 'r', 0) == 3);
+    printf("%d\n", q3(str, 'i', 0) == 2);
+    printf("%d\n", q3(str, 'n', 0) == 3);
 }
 
 void testQ4()
@@ -216,7 +222,7 @@ void testQ4()
     char strBusca[50];
     int posicoes[30];
     int i;
-    for (i = 0; i < 30; i++)
+    /*for (i = 0; i < 30; i++)
     {
         posicoes[i] = -1;
     }
@@ -226,13 +232,13 @@ void testQ4()
     printf("%d\n", posicoes[0] == 5);
     printf("%d\n", posicoes[1] == 8);
     printf("%d\n", posicoes[2] == 34);
-    printf("%d\n", posicoes[3] == 37);
+    printf("%d\n", posicoes[3] == 37);*/
 
     for (i = 0; i < 30; i++)
     {
         posicoes[i] = -1;
     }
-    strcpy(strTexto, "Olá, o mundo é muito grande. Tem muitas pessoas, e muitos problemas");
+    strcpy(strTexto, "Ola, o mundo e muito grande. Tem muitas pessoas, e muitos problemas");
     strcpy(strBusca, "mui");
     printf("%d\n", q4(strTexto, strBusca, posicoes) == 3);
     printf("%d\n", posicoes[0] == 16);
@@ -241,6 +247,37 @@ void testQ4()
     printf("%d\n", posicoes[3] == 36);
     printf("%d\n", posicoes[4] == 52);
     printf("%d\n", posicoes[5] == 54);
+
+    /*for (i = 0; i < 30; i++)
+    {
+        posicoes[i] = -1;
+    }
+    strcpy(strTexto, "Gustavo e Rainara estavam estudando estatistica no estaleiro");
+    strcpy(strBusca, "sta");
+    printf("%d\n", q4(strTexto, strBusca, posicoes) == 4);
+    printf("%d\n", posicoes[0] == 3);
+    printf("%d\n", posicoes[1] == 5);
+    printf("%d\n", posicoes[2] == 20);
+    printf("%d\n", posicoes[3] == 22);
+    printf("%d\n", posicoes[4] == 38);
+    printf("%d\n", posicoes[5] == 40);
+    printf("%d\n", posicoes[6] == 53);
+    printf("%d\n", posicoes[7] == 55);*/
+
+    /*for (i = 0; i < 30; i++)
+    {
+        posicoes[i] = -1;
+    }
+    strcpy(strTexto, "Tres pratos de trigo para tres tigres tristes");
+    strcpy(strBusca, "res");
+    printf("%d\n", q4(strTexto, strBusca, posicoes) == 3);
+    printf("%d\n", posicoes[0] == 2);
+    printf("%d\n", posicoes[1] == 4);
+    printf("%d\n", posicoes[2] == 28);
+    printf("%d\n", posicoes[3] == 30);
+    printf("%d\n", posicoes[4] == 35);
+    printf("%d\n", posicoes[5] == 37);*/
+    
 }
 
 void testQ5()

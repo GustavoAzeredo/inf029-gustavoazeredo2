@@ -278,7 +278,42 @@ int q3(char *texto, char c, int isCaseSensitive)
  */
 int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
-    int qtdOcorrencias = -1;
+    int qtdOcorrencias = 0, sizetexto = 0, sizebusca = 0, incremento = 0;
+    int p=0, i=0, pinicial=0, pfinal=0;
+
+    sizebusca = strlen(strBusca);
+    sizetexto = strlen(strTexto);
+
+    char aux[sizebusca];
+
+    for (i = 0; i < sizebusca; ++i)
+    {
+    	aux[i] = 0;
+    }
+
+    	for (i = 0; i < sizetexto; ++i)
+    	{
+    		incremento = i;
+
+    		for (int j = 0; j < sizebusca; ++j)
+    		{
+    			aux[j] = strTexto[incremento];
+    			incremento++;
+    		}
+	    		if (strcmp(aux,strBusca))
+	    		{
+	    			qtdOcorrencias = qtdOcorrencias;
+	    		}
+	    		else
+	    		{
+	    			pinicial = incremento - sizebusca + 1;
+	    			pfinal = incremento;
+	    			posicoes[p] = pinicial;
+	    			posicoes[p+1] = pfinal;
+	    			qtdOcorrencias++;
+	    			p = p+2;
+	    		}
+    	}
 
     return qtdOcorrencias;
 }
@@ -326,7 +361,7 @@ int q5(int num)
 }
 
 /*
- Q5 = ocorrência de um número em outro
+ Q6 = ocorrência de um número em outro
  @objetivo
     Verificar quantidade de vezes da ocorrência de um número em outro.
  @entrada
