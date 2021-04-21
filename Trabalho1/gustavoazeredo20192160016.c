@@ -314,7 +314,42 @@ int q5(int num)
 
 int q6(int numerobase, int numerobusca)
 {
-    int qtdOcorrencias;
+    int qtdOcorrencias=0, aux=0, qtddig=0;
+
+    aux = numerobase;
+
+    do
+	{
+		aux = (aux/10);
+		qtddig++;
+
+	} while (aux!=0);
+
+		int v[qtddig];
+		aux = numerobase;
+
+		for (int i = 0; i < qtddig; ++i)
+		{
+			v[i] = (aux%10);
+			aux = (aux/10);
+		}
+
+			for (int j = 0; j < qtddig; ++j)
+			{
+				aux = 0;
+				for (int k = j; k < qtddig; ++k)
+				{
+					aux = (aux + v[k]) * 10;
+					if (numerobusca==(aux/10))
+					{
+						qtdOcorrencias++;
+					}
+					else
+					{
+						qtdOcorrencias = qtdOcorrencias;
+					}
+				}
+			}
 
 	return qtdOcorrencias;
 }

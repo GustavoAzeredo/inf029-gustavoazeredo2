@@ -34,11 +34,11 @@ int main()
     /*testSomar();
     testFatorial();
     testQ1();
-    testQ2();
+    testQ2();*/
     testQ3();
-    testQ4();
-    testQ5();*/
-    testQ6();
+    /*testQ4();
+    testQ5();
+    testQ6();*/
 }
 
 /*int main()
@@ -243,6 +243,10 @@ void testQ5()
     printf("%d\n", q5(78) == 87);
     printf("%d\n", q5(3) == 3);
     printf("%d\n", q5(5430) == 345);
+    printf("%d\n", q5(654) == 654);
+    printf("%d\n", q5(1) == 2);
+    printf("%d\n", q5(12121) == 12121);
+    printf("%d\n", q5(33) == 33);
 }
 
 void testQ6()
