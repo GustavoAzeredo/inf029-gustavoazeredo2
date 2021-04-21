@@ -275,6 +275,7 @@ int q5(int num)
 	int numinv=0, qtddig=0, i=0, aux=0;
 
 	aux = num;
+
 	do
 	{
 		aux = (aux/10);
@@ -282,20 +283,21 @@ int q5(int num)
 
 	} while (aux!=0);
 
-	int v[qtddig];
-	aux=num;
-	for (int i = 0; i < qtddig; ++i)
-	{
-		v[i] = (aux%10);
-		aux = (aux/10);
-	}
-	
-	for (int i = 0; i < qtddig; ++i)
-	{
-		numinv = ((numinv + v[i]) * 10);
-	}
+		int v[qtddig];
+		aux = num;
 
-	num = numinv;
+		for (int i = 0; i < qtddig; ++i)
+		{
+			v[i] = (aux%10);
+			aux = (aux/10);
+		}
+		
+			for (int i = 0; i < qtddig; ++i)
+			{
+				numinv = ((numinv + v[i]) * 10);
+			}
+
+			num = (numinv/10);
 
     return num;
 }
@@ -313,5 +315,7 @@ int q5(int num)
 int q6(int numerobase, int numerobusca)
 {
     int qtdOcorrencias;
+
+	return qtdOcorrencias;
 }
  
