@@ -228,9 +228,32 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
  */
 int q3(char *texto, char c, int isCaseSensitive)
 {
-    int qtdOcorrencias = -1;
+    int qtdOcorrencias = 0, size=0;
 
-    return qtdOcorrencias;
+    size = strlen(texto);
+
+    if (isCaseSensitive==1)
+    {
+    	for (int i = 0; i < size; ++i)
+	    {
+	    	if (texto[i]==c)
+	    	{
+	    		qtdOcorrencias++;
+	    	}
+	    }
+    }
+    else
+    {
+    	for (int i = 0; i < size; ++i)
+	    {
+	    	if (texto[i]==c||texto[i]==c-32)
+	    	{
+	    		qtdOcorrencias++;
+	    	}
+	    }
+    }
+
+	return qtdOcorrencias;
 }
 
 /*

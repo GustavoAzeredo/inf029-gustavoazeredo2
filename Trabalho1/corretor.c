@@ -34,10 +34,10 @@ int main()
     /*testSomar();
     testFatorial();
     testQ1();
-    testQ2();*/
-    testQ3();
-    /*testQ4();
-    testQ5();
+    testQ2();
+    testQ3();*/
+    testQ4();
+    /*testQ5();
     testQ6();*/
 }
 
@@ -200,8 +200,14 @@ void testQ3()
     printf("%d\n", q3(str, 'a', 0) == 3);
     printf("%d\n", q3(str, 'b', 0) == 0);
     printf("%d\n", q3(str, 'l', 1) == 0);
-    printf("%d\n", q3(str, 'l', 0) == 1);
+    printf("%d\n", q3(str, 'l', 0) == 0);
     printf("%d\n", q3(str, 'L', 0) == 1);
+    strcpy(str, "Gustavo Rodrigues de Azeredo Coutinho");
+    printf("%d\n", q3(str, 'a', 0) == 2);
+    printf("%d\n", q3(str, 'e', 0) == 4);
+    printf("%d\n", q3(str, 'i', 0) == 2);
+    printf("%d\n", q3(str, 'o', 0) == 5);
+    printf("%d\n", q3(str, 'u', 0) == 3);
 }
 
 void testQ4()
@@ -243,10 +249,11 @@ void testQ5()
     printf("%d\n", q5(78) == 87);
     printf("%d\n", q5(3) == 3);
     printf("%d\n", q5(5430) == 345);
-    printf("%d\n", q5(654) == 654);
-    printf("%d\n", q5(1) == 2);
+    printf("%d\n", q5(654) == 456);
+    printf("%d\n", q5(1) == 1);
     printf("%d\n", q5(12121) == 12121);
-    printf("%d\n", q5(33) == 33);
+    printf("%d\n", q5(30) == 3);
+    printf("%d\n", q5(300) == 3);
 }
 
 void testQ6()
