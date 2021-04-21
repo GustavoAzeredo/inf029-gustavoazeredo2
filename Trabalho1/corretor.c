@@ -31,14 +31,14 @@ void testQ6();
 
 int main()
 {
-    //testSomar();
-    //testFatorial();
+    /*testSomar();
+    testFatorial();
     testQ1();
-    /*testQ2();
+    testQ2();
     testQ3();
-    testQ4();
+    testQ4();*/
     testQ5();
-    testQ6();*/
+    //testQ6();
 }
 
 /*int main()
@@ -78,26 +78,66 @@ void testQ1()
     printf("%d\n", q1(str) == 0);
     strcpy(str, "/9/2014");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "//");
+    strcpy(str, "10//2020");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "//2012");
+    strcpy(str, "10/9/");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "9//");
+    strcpy(str, "//1990");
     printf("%d\n", q1(str) == 0);
     strcpy(str, "/4/");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "31/9/2014");
+    strcpy(str, "31//");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "29/02/15");
+    strcpy(str, "31/02/2015");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "29/2/12");
+    strcpy(str, "31/4/2012");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "31/6/2028");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "31/9/1812");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "31/11/1993");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "2/02/215");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "9/05/012");
     printf("%d\n", q1(str) == 1);
-    strcpy(str, "9/13/2028");
-    printf("%d\n", q1(str) == 0);
+    strcpy(str, "24/012/014");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "4/4/14");
+    printf("%d\n", q1(str) == 1);
     strcpy(str, "12/12/12");
     printf("%d\n", q1(str) == 1);
     strcpy(str, "13/13/13");
     printf("%d\n", q1(str) == 0);
+    strcpy(str, "10/9/00");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "1/1/1");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "4/4/4");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "21/12/21");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "0/012/2015");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "30/2/2012");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "31/2/2012");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "16/10/1990");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "31/11/993");
+    printf("%d\n", q1(str) == 0);
+    strcpy(str, "16/04/1990");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "18/3/1989");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "25/7/1986");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "6/2/1959");
+    printf("%d\n", q1(str) == 1);
+    strcpy(str, "6/5/1948");
+    printf("%d\n", q1(str) == 1);
 }
 
 void testQ2()
