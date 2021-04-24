@@ -34,10 +34,10 @@ int main()
     /*testSomar();
     testFatorial();
     testQ1();
-    testQ2();
-    testQ3();*/
-    testQ4();
-    /*testQ5();
+    testQ2();*/
+    testQ3();
+    /*testQ4();
+    testQ5();
     testQ6();*/
 }
 
@@ -98,11 +98,11 @@ void testQ1()
     printf("%d\n", q1(str) == 0);
     strcpy(str, "31/11/1993");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "2/02/215");
+    strcpy(str, "02/02/215");
     printf("%d\n", q1(str) == 0);
     strcpy(str, "9/05/012");
     printf("%d\n", q1(str) == 1);
-    strcpy(str, "24/012/014");
+    strcpy(str, "24/12/014");
     printf("%d\n", q1(str) == 1);
     strcpy(str, "4/4/14");
     printf("%d\n", q1(str) == 1);
@@ -111,14 +111,14 @@ void testQ1()
     strcpy(str, "13/13/13");
     printf("%d\n", q1(str) == 0);
     strcpy(str, "10/9/00");
-    printf("%d\n", q1(str) == 1);
+    printf("%d\n", q1(str) == 0);
     strcpy(str, "1/1/1");
     printf("%d\n", q1(str) == 1);
     strcpy(str, "4/4/4");
     printf("%d\n", q1(str) == 1);
     strcpy(str, "21/12/21");
     printf("%d\n", q1(str) == 1);
-    strcpy(str, "0/012/2015");
+    strcpy(str, "0/12/2015");
     printf("%d\n", q1(str) == 0);
     strcpy(str, "30/2/2012");
     printf("%d\n", q1(str) == 0);
@@ -128,7 +128,7 @@ void testQ1()
     printf("%d\n", q1(str) == 1);
     strcpy(str, "31/11/993");
     printf("%d\n", q1(str) == 0);
-    strcpy(str, "16/04/1990");
+    strcpy(str, "16/4/1990");
     printf("%d\n", q1(str) == 1);
     strcpy(str, "18/3/1989");
     printf("%d\n", q1(str) == 1);
@@ -208,12 +208,39 @@ void testQ3()
     printf("%d\n", q3(str, 'i', 0) == 2);
     printf("%d\n", q3(str, 'o', 0) == 5);
     printf("%d\n", q3(str, 'u', 0) == 3);
-    strcpy(str, "Rainara Conceição Resende");
+    strcpy(str, "João da Silva");
+    printf("%d\n", q3(str, 'a', 0) == 2);
+    printf("%d\n", q3(str, 'S', 0) == 1);
+    printf("%d\n", q3(str, 'o', 0) == 2);
+    printf("%d\n", q3(str, 'i', 0) == 1);
+    printf("%d\n", q3(str, 'n', 0) == 0);
+    strcpy(str, "Universidade Federal da Bahia");
+    printf("%d\n", q3(str, 'r', 0) == 2);
+    printf("%d\n", q3(str, 'u', 0) == 1);
+    printf("%d\n", q3(str, 'U', 1) == 1);
+    printf("%d\n", q3(str, 's', 0) == 1);
+    printf("%d\n", q3(str, 'F', 0) == 1);
+    printf("%d\n", q3(str, 'i', 0) == 3);
+    printf("%d\n", q3(str, 'h', 0) == 1);
+    printf("%d\n", q3(str, 'c', 1) == 0);
+    strcpy(str, "Instituto Federal da Bahia");
+    printf("%d\n", q3(str, 'I', 1) == 1);
+    printf("%d\n", q3(str, 'i', 0) == 3);
+    printf("%d\n", q3(str, 's', 0) == 1);
+    printf("%d\n", q3(str, 't', 0) == 3);
+    printf("%d\n", q3(str, 'n', 0) == 1);
+    strcpy(str, "Maria Santos");
     printf("%d\n", q3(str, 'a', 0) == 3);
-    printf("%d\n", q3(str, 'c', 0) == 2);
-    printf("%d\n", q3(str, 'r', 0) == 3);
-    printf("%d\n", q3(str, 'i', 0) == 2);
-    printf("%d\n", q3(str, 'n', 0) == 3);
+    printf("%d\n", q3(str, 'r', 0) == 1);
+    printf("%d\n", q3(str, 'o', 0) == 1);
+    printf("%d\n", q3(str, 'i', 0) == 1);
+    printf("%d\n", q3(str, 'n', 0) == 1);
+    strcpy(str, "Maria João de Jesus");
+    printf("%d\n", q3(str, 'a', 0) == 2);
+    printf("%d\n", q3(str, 'J', 0) == 2);
+    printf("%d\n", q3(str, 'o', 0) == 2);
+    printf("%d\n", q3(str, 'i', 0) == 1);
+    printf("%d\n", q3(str, 's', 0) == 2);
 }
 
 void testQ4()
@@ -222,7 +249,7 @@ void testQ4()
     char strBusca[50];
     int posicoes[30];
     int i;
-    /*for (i = 0; i < 30; i++)
+    for (i = 0; i < 30; i++)
     {
         posicoes[i] = -1;
     }
@@ -232,7 +259,7 @@ void testQ4()
     printf("%d\n", posicoes[0] == 5);
     printf("%d\n", posicoes[1] == 8);
     printf("%d\n", posicoes[2] == 34);
-    printf("%d\n", posicoes[3] == 37);*/
+    printf("%d\n", posicoes[3] == 37);
 
     for (i = 0; i < 30; i++)
     {
@@ -248,7 +275,7 @@ void testQ4()
     printf("%d\n", posicoes[4] == 52);
     printf("%d\n", posicoes[5] == 54);
 
-    /*for (i = 0; i < 30; i++)
+    for (i = 0; i < 30; i++)
     {
         posicoes[i] = -1;
     }
@@ -262,9 +289,9 @@ void testQ4()
     printf("%d\n", posicoes[4] == 38);
     printf("%d\n", posicoes[5] == 40);
     printf("%d\n", posicoes[6] == 53);
-    printf("%d\n", posicoes[7] == 55);*/
+    printf("%d\n", posicoes[7] == 55);
 
-    /*for (i = 0; i < 30; i++)
+    for (i = 0; i < 30; i++)
     {
         posicoes[i] = -1;
     }
@@ -276,7 +303,7 @@ void testQ4()
     printf("%d\n", posicoes[2] == 28);
     printf("%d\n", posicoes[3] == 30);
     printf("%d\n", posicoes[4] == 35);
-    printf("%d\n", posicoes[5] == 37);*/
+    printf("%d\n", posicoes[5] == 37);
     
 }
 

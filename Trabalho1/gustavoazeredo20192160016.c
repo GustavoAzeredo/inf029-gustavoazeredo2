@@ -75,27 +75,80 @@ int fatorial(int x)
  */
 int q1(char *data)
 {
-    int datavalida = 1;
-    int iDia, iMes, iAno, qtdnum;
     
-    qtdnum = sscanf(data,"%d/%d/%d",&iDia,&iMes,&iAno);
+    int iDia, iMes, iAno, size;
+    char sDia[]="du", sMes[]="du", sAno[]="mcdu";
+    int i=0, j=0, k=0;
 
-    if ((iAno/1000)==0&&(iAno/100)!=0)
+    size = strlen(data);
+
+    if (data[i]!='/')
+    {
+    	do
+		{
+		   	sDia[i] = data[i];
+		   	i++;
+		} while (data[i]!='/');
+    }
+    else
     {
     	return 0;
     }
 
-	    if ((iAno/1000)==0&&(iAno/100)==0)
-	    {
-	    	iAno = iAno + 2000;
-	    }
+    j = i + 1;
+    i = 0;
 
-		    if (qtdnum!=3)
+    	if (data[j]!='/')
+    	{
+    		do
 		    {
-		    	return 0;
+		    	sMes[i] = data[j];
+		    	i++;
+		    	j++;
+		    } while (data[j]!='/');
+    	}
+    	else
+    	{
+    		return 0;
+    	}
+
+    	k = j + 1;
+	    i = 0;
+
+	    	if (data[k]!='/')
+	    	{
+	    		do
+			    {
+			    	sAno[i] = data[k];
+			    	i++;
+			    	k++;
+			    } while (data[k]!='\0');
+	    	}
+	    	else
+	    	{
+	    		return 0;
+	    	}
+        	
+    iDia = atoi(sDia);
+	iMes = atoi(sMes);
+	iAno = atoi(sAno);
+
+	if(iAno==0)
+	{
+		return 0;
+	}
+		
+        if ((iAno/1000)==0&&(iAno/100)!=0)
+        {
+        	return 0;
+        }
+	       		    
+		    if ((iAno/1000)==0&&(iAno/100)==0)
+		    {
+		    	iAno = iAno + 2000;
 		    }
 
-				if ((iDia>=1&&iDia<=28)&&(iMes>=1&&iMes<=12)&&(iAno!=0))
+	    		if ((iDia>=1&&iDia<=28)&&(iMes>=1&&iMes<=12)&&(iAno!=0))
 				{
 					return 1;
 				}
