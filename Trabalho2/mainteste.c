@@ -18,18 +18,18 @@ void testeListaEncadeada();
 int main()
 {
     inicializar();
-    //testeInserirSemNada();
+    testeInserirSemNada();
     testeCriarEstrutura();
     testeInserirComEstrutura();
-    /*testeExcluir();
+    testeExcluir();
     testeExcluirNumeroEspecifico();
-    testeListar();
+    /*testeListar();
     testeRetornarTodosNumeros();
     testeMudarTamanhoEstrutura();
     testeListaEncadeada();
     finalizar();*/
 }
-int ligado = 0;
+int ligado = 1;
 void show_log(char *str)
 {
     if (ligado)
@@ -78,6 +78,12 @@ void testeInserirComEstrutura()
     printf("%d\n", inserirNumeroEmEstrutura(2, -2) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 6) == SUCESSO);
     printf("%d\n", inserirNumeroEmEstrutura(2, 5) == SEM_ESPACO);
+    printf("%d\n", inserirNumeroEmEstrutura(3, 6) == SUCESSO);
+    printf("%d\n", inserirNumeroEmEstrutura(1, -2) == SEM_ESTRUTURA_AUXILIAR);
+    printf("%d\n", inserirNumeroEmEstrutura(7, 6) == SEM_ESTRUTURA_AUXILIAR);
+    printf("%d\n", inserirNumeroEmEstrutura(5, 5) == SUCESSO);
+    printf("%d\n", inserirNumeroEmEstrutura(5, 2) == SUCESSO);
+    printf("%d\n", inserirNumeroEmEstrutura(5, 1) == SEM_ESPACO);
 }
 /*
 2 [4,-2,6]
@@ -92,6 +98,12 @@ void testeExcluir()
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(1) == SEM_ESTRUTURA_AUXILIAR);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == ESTRUTURA_AUXILIAR_VAZIA);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(3) == SUCESSO);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(3) == ESTRUTURA_AUXILIAR_VAZIA);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(5) == SUCESSO);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(5) == SUCESSO);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(4) == ESTRUTURA_AUXILIAR_VAZIA);
+    printf("%d\n", excluirNumeroDoFinaldaEstrutura(7) == SEM_ESTRUTURA_AUXILIAR);
 }
 
 /*

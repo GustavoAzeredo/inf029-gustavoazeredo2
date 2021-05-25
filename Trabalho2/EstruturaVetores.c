@@ -16,7 +16,7 @@ Rertono (int)
     SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
     TAMANHO_INVALIDO - o tamanho tem inteiro maior ou igual a 1
 */
-int criarEstruturaAuxiliar(int posicao, int tamanho)
+int criarEstruturaAuxiliar(int posicao, int tamanho)//OK
 {
 	int retorno = 0;
 	int n = tamanho + 1;
@@ -82,7 +82,7 @@ Retorno (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
-int inserirNumeroEmEstrutura(int posicao, int valor)
+int inserirNumeroEmEstrutura(int posicao, int valor)//OK
 {
 	int retorno = 0;
 	
@@ -107,10 +107,13 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
 					vetorPrincipal[posicao][i] = malloc(sizeof(int));
 					*vetorPrincipal[posicao][i] = valor;
 					retorno = SUCESSO;
+                    break;
 				}
+                else
+                {
+                    retorno = SEM_ESPACO;
+                }
 			}
-			
-		
 		}
 	}
     return retorno;
@@ -126,9 +129,38 @@ Rertono (int)
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int excluirNumeroDoFinaldaEstrutura(int posicao)
+int excluirNumeroDoFinaldaEstrutura(int posicao)//OK
 {
-    int retorno = SUCESSO;
+    int retorno = 0;
+
+    if (posicao<1||posicao>10)
+    {
+        retorno = POSICAO_INVALIDA;
+    }
+    else
+    {
+        if (vetorPrincipal[posicao]==NULL)
+        {
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+        else
+        {
+
+            for (int i = *vetorPrincipal[posicao][0]; i >= 1; --i)
+            {
+                if (vetorPrincipal[posicao][i]!=NULL)
+                {
+                    vetorPrincipal[posicao][i] = NULL;
+                    retorno = SUCESSO;
+                    break;
+                }
+                else
+                {
+                    retorno = ESTRUTURA_AUXILIAR_VAZIA;
+                }
+            }
+        }
+    }
     return retorno;
 }
 
@@ -146,12 +178,38 @@ Rertono (int)
 */
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
-    int retorno = SUCESSO;
+    int retorno = 0, vazio = 0;
+    
+    if (posicao<1||posicao>10)
+    {
+        retorno = POSICAO_INVALIDA;
+    }
+    else
+    {
+        if (vetorPrincipal[posicao]==NULL)
+        {
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+        else
+        {
+            for (int i = 1; i <= *vetorPrincipal[posicao][0]; ++i)
+            {
+                if (vetorPrincipal[posicao][i]!=NULL)
+                {
+                    vazio++;
+                    if (*vetorPrincipal[posicao][i]==valor)
+                    {
+                        vetorPrincipal[posicao][i] = NULL;
+                    }
+                }
+            }
+        }
+
     return retorno;
 }
 
 // se posição é um valor válido {entre 1 e 10}
-int ehPosicaoValida(int posicao)
+int ehPosicaoValida(int posicao)//OK
 {
     int retorno = 0;
     if (posicao < 1 || posicao > 10)
@@ -290,7 +348,7 @@ void destruirListaEncadeadaComCabecote(No **inicio)
 Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
 */
 
-void inicializar()
+void inicializar()//OK
 {
 	vetorPrincipal = malloc(TAM*sizeof(int **));
 	for (int i = 0; i < TAM; ++i)
