@@ -96,12 +96,12 @@ void testeExcluir()
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(0) == POSICAO_INVALIDA);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(1) == SEM_ESTRUTURA_AUXILIAR);
-    printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
-    printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == ESTRUTURA_AUXILIAR_VAZIA);
+    //printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == SUCESSO);
+    //printf("%d\n", excluirNumeroDoFinaldaEstrutura(2) == ESTRUTURA_AUXILIAR_VAZIA);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(3) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(3) == ESTRUTURA_AUXILIAR_VAZIA);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(5) == SUCESSO);
-    printf("%d\n", excluirNumeroDoFinaldaEstrutura(5) == SUCESSO);
+    //printf("%d\n", excluirNumeroDoFinaldaEstrutura(5) == SUCESSO);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(4) == ESTRUTURA_AUXILIAR_VAZIA);
     printf("%d\n", excluirNumeroDoFinaldaEstrutura(7) == SEM_ESTRUTURA_AUXILIAR);
 }
@@ -120,6 +120,13 @@ void testeExcluirNumeroEspecifico()
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 12) == NUMERO_INEXISTENTE);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(9, 7) == SUCESSO);
     printf("%d\n", excluirNumeroEspecificoDeEstrutura(1, 2) == SEM_ESTRUTURA_AUXILIAR);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(7, 2) == SEM_ESTRUTURA_AUXILIAR);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(2, 6) == NUMERO_INEXISTENTE);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(2, 4) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(5, 2) == NUMERO_INEXISTENTE);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(5, 5) == SUCESSO);
+    printf("%d\n", excluirNumeroEspecificoDeEstrutura(4, 5) == ESTRUTURA_AUXILIAR_VAZIA);
+    
 }
 /*
 9 [ 4, , ] 

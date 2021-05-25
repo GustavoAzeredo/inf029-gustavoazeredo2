@@ -178,7 +178,7 @@ Rertono (int)
 */
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
-    int retorno = 0, vazio = 0;
+    int retorno = 0, vazio = 0, igual = 0;
     
     if (posicao<1||posicao>10)
     {
@@ -199,12 +199,31 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
                     vazio++;
                     if (*vetorPrincipal[posicao][i]==valor)
                     {
+                    	igual++;
                         vetorPrincipal[posicao][i] = NULL;
+                        retorno = SUCESSO;
+                        break;
                     }
+                    else
+                    {
+                    	igual = igual;
+                    }
+                }
+                else
+                {
+                	vazio = vazio;
                 }
             }
         }
-
+    }
+    if (vazio==0)
+    {
+    	retorno = ESTRUTURA_AUXILIAR_VAZIA;
+    }
+    else if (igual==0)
+    {
+    	retorno = NUMERO_INEXISTENTE;
+    }
     return retorno;
 }
 
