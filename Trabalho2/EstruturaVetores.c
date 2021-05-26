@@ -176,7 +176,7 @@ Rertono (int)
     NUMERO_INEXISTENTE - Número não existe
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 */
-int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
+int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)//OK
 {
     int retorno = 0, vazio = 0, igual = 0;
     
@@ -200,7 +200,18 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
                     if (*vetorPrincipal[posicao][i]==valor)
                     {
                     	igual++;
-                        vetorPrincipal[posicao][i] = NULL;
+                        for (int j = i; j < *vetorPrincipal[posicao][0]; ++j)//inicio do shift
+                        {
+                        	if (vetorPrincipal[posicao][j+1]!=NULL)
+                        	{
+                        		*vetorPrincipal[posicao][j] = *vetorPrincipal[posicao][j+1];
+                        	}
+                        	else
+                        	{
+                        		vetorPrincipal[posicao][j] = NULL;
+                        	}
+                        	
+                        }//final do shift
                         retorno = SUCESSO;
                         break;
                     }
@@ -214,16 +225,17 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
                 	vazio = vazio;
                 }
             }
+            if (vazio==0)
+		    {
+		    	retorno = ESTRUTURA_AUXILIAR_VAZIA;
+		    }
+		    else if (igual==0)
+		    {
+		    	retorno = NUMERO_INEXISTENTE;
+		    }
         }
-    }
-    if (vazio==0)
-    {
-    	retorno = ESTRUTURA_AUXILIAR_VAZIA;
-    }
-    else if (igual==0)
-    {
-    	retorno = NUMERO_INEXISTENTE;
-    }
+	}
+	
     return retorno;
 }
 
@@ -252,6 +264,29 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
     int retorno = 0;
+    
+    if (posicao<1||posicao>10)
+    {
+        retorno = POSICAO_INVALIDA;
+    }
+    else
+    {
+        if (vetorPrincipal[posicao]==NULL)
+        {
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+        else
+        {
+        	for (int i = 0; i < *vetorPrincipal[posicao][0]; ++i)
+        	{
+        		if (vetorPrincipal[posicao][i+1]!=NULL)
+        		{
+        			vetorAux[i] = *vetorPrincipal[posicao][i+1];		
+        		}
+        	}
+        	retorno = SUCESSO;
+        }
+    }
 
     return retorno;
 }
