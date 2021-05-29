@@ -98,8 +98,6 @@ int inserirNumeroEmEstrutura(int posicao, int valor)//OK
 		}
 		else
 		{
-			//printf("tamanho estrutura == %d\n", *vetorPrincipal[posicao][0]);
-
 			for (int i = 1; i <= *vetorPrincipal[posicao][0]; ++i)
 			{
 				if (vetorPrincipal[posicao][i]==NULL)
@@ -303,22 +301,28 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
     int retorno = 0;
+    int vaux[*vetorPrincipal[posicao][0]];
 
-    if (posicao<1||posicao>10)
+    for (int i = 0; i < *vetorPrincipal[posicao][0]; ++i)
     {
-        retorno = POSICAO_INVALIDA;
+    	vaux[i] = 0;
     }
-    else
-    {
-        if (vetorPrincipal[posicao]==NULL)
-        {
-            retorno = SEM_ESTRUTURA_AUXILIAR;
-        }
-        else
-        {
-        	
+
+	    if (posicao<1||posicao>10)
+	    {
+	        retorno = POSICAO_INVALIDA;
 	    }
-	}
+	    else
+	    {
+	        if (vetorPrincipal[posicao]==NULL)
+	        {
+	            retorno = SEM_ESTRUTURA_AUXILIAR;
+	        }
+	        else
+	        {
+	        	
+		    }
+		}
 
     return retorno;
 }
@@ -330,10 +334,55 @@ Rertono (int)
     SUCESSO - recuperado com sucesso os valores da estrutura na posição 'posicao'
     SEM_ESTRUTURA_AUXILIAR - Não tem estrutura auxiliar
 */
-int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
+int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])//OK
 {
 
     int retorno = 0;
+    int k = 0, semestrutura = 0, vazio = 0;
+
+    
+	for (int i = 1; i <= TAM; ++i)
+	{
+		if (vetorPrincipal[i]!=NULL)
+		{
+			semestrutura++;
+			if (vetorPrincipal[i][1]==NULL)
+			{
+				vazio+=0;
+			}
+			else
+			{
+				vazio++;
+				for (int j = 1; j <= *vetorPrincipal[i][0]; ++j)
+	    		{
+	    			if (vetorPrincipal[i][j]!=NULL)
+	    			{
+	    				vetorAux[k] = *vetorPrincipal[i][j];
+	    				k++;
+	    			}
+	    		}
+			}
+			
+		}
+		else
+		{
+			semestrutura +=0;
+		}
+		
+	}
+	if (semestrutura==0)
+	{
+		retorno = SEM_ESTRUTURA_AUXILIAR;
+	}
+	else if (vazio==0)
+	{
+		retorno = TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
+	}
+	else
+	{
+		retorno = SUCESSO;
+	}
+
     return retorno;
 }
 
@@ -376,10 +425,43 @@ Retorno (int)
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
     Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
-int getQuantidadeElementosEstruturaAuxiliar(int posicao)
+int getQuantidadeElementosEstruturaAuxiliar(int posicao)//OK
 {
 
     int retorno = 0;
+    int qtdelementos = 0;
+
+    if (posicao<1||posicao>10)
+    {
+        retorno = POSICAO_INVALIDA;
+    }
+    else
+    {
+        if (vetorPrincipal[posicao]==NULL)
+        {
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+        else
+        {
+        	for (int i = 1; i < *vetorPrincipal[posicao][0]; ++i)
+        	{
+        		if (vetorPrincipal[posicao][i]==NULL)
+        		{
+        			qtdelementos +=0;
+        		}
+        		else
+        		{
+        			qtdelementos++;
+        		}
+        	}
+        	if (qtdelementos==0){
+        		retorno = ESTRUTURA_AUXILIAR_VAZIA;
+        	}
+        	else{
+        		retorno = qtdelementos;
+        	}
+	    }
+	}
 
     return retorno;
 }
@@ -420,8 +502,9 @@ Objetivo: inicializa o programa. deve ser chamado ao inicio do programa
 
 void inicializar()//OK
 {
-	vetorPrincipal = malloc(TAM*sizeof(int **));
-	for (int i = 0; i < TAM; ++i)
+	int n = TAM + 1;
+	vetorPrincipal = malloc(n*sizeof(int **));
+	for (int i = 0; i <= TAM; ++i)
 	{
 		vetorPrincipal[i] = NULL;
 	}
