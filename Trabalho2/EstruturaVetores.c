@@ -275,7 +275,7 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])//OK
         }
         else
         {
-        	for (int i = 0; i < *vetorPrincipal[posicao][0]; ++i)
+        	for (int i = 0; i <= *vetorPrincipal[posicao][0]; ++i)
         	{
         		if (vetorPrincipal[posicao][i+1]!=NULL)
         		{
@@ -410,10 +410,47 @@ Rertono (int)
     NOVO_TAMANHO_INVALIDO - novo tamanho não pode ser negativo
     SEM_ESPACO_DE_MEMORIA - erro na alocação do novo valor
 */
-int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
+int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)//OK
 {
 
     int retorno = 0;
+    
+
+    if (posicao<1||posicao>10)
+    {
+        retorno = POSICAO_INVALIDA;
+    }
+    else
+    {
+        if (vetorPrincipal[posicao]==NULL)
+        {
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        }
+        else
+        {
+        	int n = novoTamanho + *vetorPrincipal[posicao][0];
+        	if (n < 1)
+        	{
+        		retorno = NOVO_TAMANHO_INVALIDO;
+        	}
+        	else
+        	{
+        		int m = n + 1;
+        		vetorPrincipal[posicao] = realloc(vetorPrincipal[posicao],  m*sizeof(int *));
+        		if (vetorPrincipal[posicao]==NULL)
+        		{
+        			retorno = SEM_ESPACO;
+        		}
+        		else
+        		{
+        			*vetorPrincipal[posicao][0] = n;
+        			retorno = SUCESSO;
+        		}
+        		
+        	}
+        }
+    }
+
     return retorno;
 }
 
@@ -443,7 +480,7 @@ int getQuantidadeElementosEstruturaAuxiliar(int posicao)//OK
         }
         else
         {
-        	for (int i = 1; i < *vetorPrincipal[posicao][0]; ++i)
+        	for (int i = 1; i <= *vetorPrincipal[posicao][0]; ++i)
         	{
         		if (vetorPrincipal[posicao][i]==NULL)
         		{
