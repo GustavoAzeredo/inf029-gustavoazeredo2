@@ -58,18 +58,6 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)//OK
 		}
 	}
 
-    /*
-    // a posicao pode já existir estrutura auxiliar
-    retorno = JA_TEM_ESTRUTURA_AUXILIAR;
-    // se posição é um valor válido {entre 1 e 10}
-    retorno = POSICAO_INVALIDA;
-    // o tamanho ser muito grande
-    retorno = SEM_ESPACO_DE_MEMORIA;
-    // o tamanho nao pode ser menor que 1
-    retorno = TAMANHO_INVALIDO;
-    // deu tudo certo, crie
-    retorno = SUCESSO;*/
-
     return retorno;
 }
 
@@ -437,16 +425,22 @@ int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)//OK
         	{
         		int m = n + 1;
         		vetorPrincipal[posicao] = realloc(vetorPrincipal[posicao],  m*sizeof(int *));
-        		if (vetorPrincipal[posicao]==NULL)
+        		if (n > *vetorPrincipal[posicao][0])
         		{
-        			retorno = SEM_ESPACO;
+        			for (int i = *vetorPrincipal[posicao][0] + 1; i <= m; ++i)
+        			{
+        				vetorPrincipal[posicao][i] = NULL;
+        			}
         		}
-        		else
-        		{
-        			*vetorPrincipal[posicao][0] = n;
-        			retorno = SUCESSO;
-        		}
-        		
+	        		if (vetorPrincipal[posicao]==NULL)
+	        		{
+	        			retorno = SEM_ESPACO;
+	        		}
+	        		else
+	        		{
+	        			*vetorPrincipal[posicao][0] = n;
+	        			retorno = SUCESSO;
+	        		}
         	}
         }
     }
@@ -553,6 +547,21 @@ Objetivo: finaliza o programa. deve ser chamado ao final do programa
 para poder liberar todos os espaços de memória das estruturas auxiliares.
 */
 
-void finalizar()
+void finalizar()//OK
 {
+	for (int i = 0; i <= TAM; ++i)
+	{
+		if (vetorPrincipal[i]!=NULL)
+		{
+			for (int j = 0; j <= *vetorPrincipal[i][0]; ++j)
+			{
+				if (vetorPrincipal[i][j]!=NULL)
+				{
+					free(vetorPrincipal[i][j]);
+				}
+			}
+			free(vetorPrincipal[i]);
+		}
+	}
+	free(vetorPrincipal);
 }
