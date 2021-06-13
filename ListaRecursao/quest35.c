@@ -17,12 +17,12 @@ int ConverteParaBinario(int n){
 
 	int b = n%2;
 
-	if (n==0)
-		return 0;
+		if (n==0)
+			return 0;
 
-		ConverteParaBinario(n/2);
+			ConverteParaBinario(n/2);
 
-			printf("%d", b);
+				printf("%d", b);
 
 	return b;
 }

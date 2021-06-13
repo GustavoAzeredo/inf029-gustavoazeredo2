@@ -23,7 +23,7 @@ int ImprimeSerie(int i, int j, int k){
 		else
 			printf("%d ", n);
 
-				ImprimeSerie(i+k,j,k);
+			ImprimeSerie(i+k,j,k);
 
 	return 0;
 }

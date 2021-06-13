@@ -2,19 +2,20 @@
 
 int SomaDosCubos();
 
-int main(int argc, char const *argv[]){
+int main(int argc, char const *argv[])
+{
 
 	int n = 10, valor = 0;
 
 		valor = SomaDosCubos(n);
 
-			printf("\n");
 			printf("%d\n", valor);
 
 	return 0;
 }
 
-int SomaDosCubos(int a){
+int SomaDosCubos(int a)
+{
 
 	int v;
 

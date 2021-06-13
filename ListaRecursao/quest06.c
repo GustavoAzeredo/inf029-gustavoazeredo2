@@ -8,13 +8,14 @@ int main(int argc, char const *argv[]){
 
 		printf("Digite o valor de k: ");
 		scanf("%d",&k);
-		printf("\nDigite o valor de n: ");
-		scanf("%d",&n);
+		
+			printf("\nDigite o valor de n: ");
+			scanf("%d",&n);
 
-			valor = exponencial(k,n,p);
+				valor = exponencial(k,n,p);
 
-				printf("\n");
-				printf("%d\n", valor);
+					printf("\n");
+					printf("%d\n", valor);
 
 	return 0;
 }

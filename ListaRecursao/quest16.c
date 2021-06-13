@@ -4,11 +4,12 @@ long int fatorial();
 
 int main(int argc, char const *argv[]){
 
-	long int num = 13, fat = 0;
+	int num = 13;
+	long int fat = 0;
 
 		fat = fatorial(num);
 
-		printf("%ld\n", fat);
+			printf("%ld\n", fat);
 		
 	return 0;
 }
