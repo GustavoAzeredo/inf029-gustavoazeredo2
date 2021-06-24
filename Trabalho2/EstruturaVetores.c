@@ -289,29 +289,6 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
     int retorno = 0;
-    int vaux[*vetorPrincipal[posicao][0]];
-
-    for (int i = 0; i < *vetorPrincipal[posicao][0]; ++i)
-    {
-    	vaux[i] = 0;
-    }
-
-	    if (posicao<1||posicao>10)
-	    {
-	        retorno = POSICAO_INVALIDA;
-	    }
-	    else
-	    {
-	        if (vetorPrincipal[posicao]==NULL)
-	        {
-	            retorno = SEM_ESTRUTURA_AUXILIAR;
-	        }
-	        else
-	        {
-	        	
-		    }
-		}
-
     return retorno;
 }
 
